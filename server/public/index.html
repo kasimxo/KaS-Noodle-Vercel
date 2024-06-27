@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <title>Noodle</title>
+
+  </head>
+  <body>
+    <div id="menu">
+      <img src="static/NoodleLogotipoExtended_Inv720.png" id="logo_ext"/>
+    </div>
+    <main id="root">
+      <section id="seleccionarArchivo">
+        <article id="pdfSelector" class="panel">
+          <img src="static/pdf_icon.png" class="icon_128"/>
+          <button id="btn_seleccionar_pdf" value="seleccionar_pdf" name="seleccionar_pdf" class="btn_subir_archivo" onclick="subirArchivoPDF()">Seleccionar archivo pdf</button>
+        </article>
+        <article id="csvSelector" class="panel">
+          <img src="static/csv_icon.png" class="icon_128"/>
+          <button id="btn_seleccionar_csv" value="seleccionar_csv" name="seleccionar_csv" class="btn_subir_archivo" onclick="not_implemented()">Seleccionar archivo csv</button>
+        </article>
+        
+      </section>
+  
+    </main>
+    <script src="js/script.js"></script>
+
+  </body>
+</html>

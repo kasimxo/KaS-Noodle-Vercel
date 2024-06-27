@@ -1,0 +1,121 @@
+html, body {height:100%;}
+body { 
+    background: #ECEFF1; 
+    color: rgba(0,0,0,0.87); 
+    font-family: Roboto, Helvetica, Arial, sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    display: flex;
+
+}
+p {
+    color: rgba(0,0,0,0.6);
+    font-weight: bold; 
+    font-size: 16px; 
+    font-family: Roboto, Helvetica, Arial, sans-serif; 
+}
+main {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+#menu {
+    background: rgb(23, 21, 22); 
+    
+    width: 10%;
+    min-width: 100px;
+    max-width: 250px;
+    padding: 25px;
+}
+#logo_ext {
+    width: 100%;
+}
+#message { 
+    background: white; 
+    max-width: 360px; 
+    margin: 100px auto 16px; 
+    padding: 32px 24px; 
+    border-radius: 3px; 
+}
+#message h2 { 
+    color: #ffa100; 
+    font-weight: bold; 
+    font-size: 16px; 
+    margin: 0 0 8px; }
+#message h1 { 
+    font-size: 22px; 
+    font-weight: 300; 
+    color: rgba(0,0,0,0.6); 
+    margin: 0 0 16px;}
+#message p { 
+    line-height: 140%; 
+    margin: 16px 0 24px; 
+    font-size: 14px; }
+#message a { 
+    display: block; 
+    text-align: center; 
+    background: #039be5; 
+    text-transform: uppercase; 
+    text-decoration: none; 
+    color: white; 
+    padding: 16px; 
+    border-radius: 4px; }
+#message, #message a { 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+#load { 
+    color: rgba(0,0,0,0.4); 
+    text-align: center; 
+    font-size: 13px; 
+}
+#seleccionarArchivo {
+    width: 100%;
+    display: flex;
+}
+.btn_subir_archivo {
+    border: 0px ;
+    background-color: rgba(23,21,22,1);
+    padding: 10px 15px 10px 15px;
+    border-radius: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: bold; 
+    font-size: 15px; 
+    font-family: Helvetica, Arial, Roboto, sans-serif; 
+}
+.btn_subir_archivo:hover {
+    background-color:  rgb(70, 70, 70);
+}
+.panel {
+    background: white; 
+    border-radius: 20px;
+    max-width: 360px; 
+    margin: 100px auto 16px; 
+    padding: 50px 24px 24px 24px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.panel:hover {
+    transform: scale(1.1);
+}
+.icon_128 {
+    height: 128px;
+    width: 128px;
+}
+.icon_64 {
+    height: 64px;
+    width: 64px;
+}
+.icon_32 {
+    height: 32px;
+    width: 32px;
+}
+@media (max-width: 600px) {
+  body, #message { 
+    margin-top: 0; 
+    background: white; 
+    box-shadow: none; }
+
+}
