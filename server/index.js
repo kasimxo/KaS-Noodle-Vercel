@@ -32,8 +32,8 @@ app.get('/js/script.js', function (req, res) {
     res.sendFile(path.join('js', 'script.js'), { root: 'public' })
 })
 app.get('/', function (req, res) {
-
-    res.sendFile(path.join('index.html'), { root: 'public' })
+    res.end("Alive: 200")
+    //res.sendFile(path.join('index.html'), { root: 'public' })
 })
 
 app.get('/prueba', function (req, res) {
