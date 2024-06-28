@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import { pdfToMarco } from './clases/pdfToMarco.js'
 import path from 'node:path'
 const app = express()
@@ -8,9 +9,24 @@ app.disable('x-powered-by')
 app.listen(8080)
 
 //Middleware
-app.use((req, res, next) => {
-    console.log(req.url)
-    next()
+app.use(cors())
+
+
+app.post('/procesadormarco', function (req, res) {
+    console.log('Se va a procesar un archivo')
+    let body = '';
+    //Leemos el base64 enviado como pdf a trozos y lo almacenamos en variable
+    req.on('data', chunk => {
+        body += chunk.toString()
+    })
+    req.on('end', () => {
+        pdfToMarco(body).then((marcoJSON) => {
+            //console.log("Se ha ejectuado la promesa", marcoJSON)
+            console.log("Se va a enviar la respuesa")
+            res.send(marcoJSON)
+            //res.status(201).end("NEPE")
+        })
+    })
 })
 
 app.get('/favicon.ico', function (req, res) {
@@ -41,20 +57,5 @@ app.get('/prueba', function (req, res) {
     res.sendFile(path.join('404.html'), { root: 'public' })
 })
 
-app.post('/procesadormarco', function (req, res) {
-    console.log('Se va a procesar un archivo')
-    let body = '';
-    //Leemos el base64 enviado como pdf a trozos y lo almacenamos en variable
-    req.on('data', chunk => {
-        body += chunk.toString()
-    })
-    req.on('end', () => {
-        pdfToMarco(body).then((marcoJSON) => {
-            console.log("Se ha ejectuado la promesa", marcoJSON)
-            res.send(marcoJSON)
-            //res.status(201).end("NEPE")
-        })
-    })
-})
 
 console.log("Servidor iniciado")

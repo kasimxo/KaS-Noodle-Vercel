@@ -1,12 +1,12 @@
-html, body {height:100%;}
-body { 
+html, body, #root, #container {height:100%;}
+body, #root, #container { 
     background: #ECEFF1; 
     color: rgba(0,0,0,0.87); 
     font-family: Roboto, Helvetica, Arial, sans-serif; 
     margin: 0; 
     padding: 0; 
     display: flex;
-
+    flex-direction: row;
 }
 p {
     color: rgba(0,0,0,0.6);
@@ -21,7 +21,7 @@ main {
 }
 #menu {
     background: rgb(23, 21, 22); 
-    
+    height: 100%;
     width: 10%;
     min-width: 100px;
     max-width: 250px;
@@ -113,7 +113,7 @@ main {
     width: 32px;
 }
 @media (max-width: 600px) {
-  body, #message { 
+  body, body > div { 
     margin-top: 0; 
     background: white; 
     box-shadow: none; }
