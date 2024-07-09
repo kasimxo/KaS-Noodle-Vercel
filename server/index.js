@@ -21,10 +21,8 @@ app.post('/procesadormarco', function (req, res) {
     })
     req.on('end', () => {
         pdfToMarco(body).then((marcoJSON) => {
-            //console.log("Se ha ejectuado la promesa", marcoJSON)
             console.log("Se va a enviar la respuesa")
             res.send(marcoJSON)
-            //res.status(201).end("NEPE")
         })
     })
 })
