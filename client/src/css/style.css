@@ -112,8 +112,12 @@ main {
     height: 32px;
     width: 32px;
 }
-.competencia {
-    background-color: #039be5;
+.competencia, .resultadoAprendizaje, .criterioEvaluacion {
+    margin: 20px;
+}
+.marco {
+    background-color: #bde2f5;
+    padding: 20px;
 }
 @media (max-width: 600px) {
   body, body > div { 
