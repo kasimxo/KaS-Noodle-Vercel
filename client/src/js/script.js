@@ -37,8 +37,7 @@ export function subirArchivoPDF() {
                     body: JSON.stringify(reader.result), // body data type must match "Content-Type" header
                 }).then(data => {
                     if (data.status === 200) {
-                        console.log("Respuesta recibida")
-                        resolve(data)
+                        resolve(data.json())
                     } else {
                         console.log("Respuesta alterada:", data.status)
                         resolve('Error')

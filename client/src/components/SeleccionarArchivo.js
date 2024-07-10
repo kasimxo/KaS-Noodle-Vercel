@@ -21,8 +21,9 @@ async function ProcesarPDF() {
 export function SeleccionarArchivo() {
     const { setContenido } = useContext(Marco)
 
-    function handle() {
-        setContenido('CACA')
+    async function handle() {
+        let texto = await subirArchivoPDF()
+        setContenido(texto)
     }
 
     return (

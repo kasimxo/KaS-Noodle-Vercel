@@ -112,6 +112,9 @@ main {
     height: 32px;
     width: 32px;
 }
+.competencia {
+    background-color: #039be5;
+}
 @media (max-width: 600px) {
   body, body > div { 
     margin-top: 0; 
