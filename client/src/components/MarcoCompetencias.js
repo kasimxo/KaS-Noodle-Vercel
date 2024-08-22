@@ -1,6 +1,9 @@
 import { useContext, useState } from 'react'
 import { Marco } from './../App'
 
+import right_arrow from './../static/Right_arrow_icon.png'
+import down_arrow from './../static/Down_arrow_icon.png'
+
 function CriterioEvaluacion(props) {
     let ce = props.valor
     return (
@@ -30,20 +33,22 @@ function ResultadoAprendizaje(props) {
     let resultadoAprendizaje = props.valor
     const [pulsado, setPulsado] = useState(false)
     const [listado, setListado] = useState()
+    const [icon, setIcon] = useState(<img src={right_arrow} className='icon_16' alt='Pulsa para abrir el detalle de la competencia' />)
     function expandirRA() {
-        console.log("Hemos pulsado una vez", pulsado)
         if (pulsado) {
             setPulsado(false)
             setListado()
+            setIcon(<img src={right_arrow} className='icon_16' alt='Pulsa para cerrar el detalle de la competencia' />)
         } else {
             setPulsado(true)
             setListado(<CriteriosEvaluacion ces={resultadoAprendizaje['criterios']} />)
+            setIcon(<img src={down_arrow} className='icon_16' alt='Pulsa para abrir el detalle de la competencia' />)
         }
         console.log(pulsado)
     }
     return (
         <div className='resultadoAprendizaje'>
-            <button id='btn_RA' className='btn_RA' onClick={expandirRA}>{resultadoAprendizaje['nombreCortoCSV']} - {resultadoAprendizaje['descripcionCSV']}</button>
+            <button id='btn_RA' className='btn_RA' onClick={expandirRA}>{icon} {resultadoAprendizaje['nombreCortoCSV']} - {resultadoAprendizaje['descripcionCSV']}</button>
             {listado}
         </div>
     )
@@ -60,7 +65,7 @@ function ResultadosAprendizaje(props) {
     return (
         <div className='resultadosAprendizaje'>
             <p>Resultados de aprendizaje:</p>
-            {coleccion}
+            <p>{coleccion}</p>
         </div>
     )
 }
@@ -69,20 +74,23 @@ function Competencia(props) {
     let comp = props.valor
     const [pulsado, setPulsado] = useState(false)
     const [listado, setListado] = useState()
+    const [icon, setIcon] = useState(<img src={right_arrow} className='icon_16' alt='Pulsa para abrir el detalle de la competencia' />)
     function expandirCOMP() {
         console.log("Hemos pulsado una vez", pulsado)
         if (pulsado) {
             setPulsado(false)
             setListado()
+            setIcon(<img src={right_arrow} className='icon_16' alt='Pulsa para cerrar el detalle de la competencia' />)
         } else {
             setPulsado(true)
             setListado(<ResultadosAprendizaje ras={comp['ras']} />)
+            setIcon(<img src={down_arrow} className='icon_16' alt='Pulsa para abrir el detalle de la competencia' />)
         }
         console.log(pulsado)
     }
     return (
         <div className='competencia'>
-            <button id='btn_Comp' className='btn_Comp' onClick={expandirCOMP}>{comp['nombreCortoCSV']}</button>
+            <button id='btn_Comp' className='btn_Comp' onClick={expandirCOMP}>{icon} {comp['nombreCortoCSV']}</button>
             {listado}
         </div>
     )
