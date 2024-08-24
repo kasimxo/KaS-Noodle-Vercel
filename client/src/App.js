@@ -1,6 +1,6 @@
 import './css/style.css'
 import { Menu } from './components/Menu'
-import { SeleccionarArchivo } from './components/SeleccionarArchivo';
+import { SeleccionarArchivo } from './components/SeleccionarArchivo'
 import { MarcoCompetencias } from './components/MarcoCompetencias'
 import { useState, createContext } from 'react'
 

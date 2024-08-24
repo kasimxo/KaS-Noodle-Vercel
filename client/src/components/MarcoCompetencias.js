@@ -1,6 +1,8 @@
 import { useContext, useState } from 'react'
 import { Marco } from './../App'
 
+import { BotonExportar } from './BotonExportar'
+
 import right_arrow from './../static/Right_arrow_icon.png'
 import down_arrow from './../static/Down_arrow_icon.png'
 
@@ -33,18 +35,17 @@ function ResultadoAprendizaje(props) {
     let resultadoAprendizaje = props.valor
     const [pulsado, setPulsado] = useState(false)
     const [listado, setListado] = useState()
-    const [icon, setIcon] = useState(<img src={right_arrow} className='icon_16' alt='Pulsa para abrir el detalle de la competencia' />)
+    const [icon, setIcon] = useState(<img src={right_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
     function expandirRA() {
         if (pulsado) {
             setPulsado(false)
             setListado()
-            setIcon(<img src={right_arrow} className='icon_16' alt='Pulsa para cerrar el detalle de la competencia' />)
+            setIcon(<img src={right_arrow} className='icon_16' alt='Icono para colapsar' title='Pulsa para cerrar el detalle de la competencia' />)
         } else {
             setPulsado(true)
             setListado(<CriteriosEvaluacion ces={resultadoAprendizaje['criterios']} />)
-            setIcon(<img src={down_arrow} className='icon_16' alt='Pulsa para abrir el detalle de la competencia' />)
+            setIcon(<img src={down_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
         }
-        console.log(pulsado)
     }
     return (
         <div className='resultadoAprendizaje'>
@@ -74,17 +75,16 @@ function Competencia(props) {
     let comp = props.valor
     const [pulsado, setPulsado] = useState(false)
     const [listado, setListado] = useState()
-    const [icon, setIcon] = useState(<img src={right_arrow} className='icon_16' alt='Pulsa para abrir el detalle de la competencia' />)
+    const [icon, setIcon] = useState(<img src={right_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
     function expandirCOMP() {
-        console.log("Hemos pulsado una vez", pulsado)
         if (pulsado) {
             setPulsado(false)
             setListado()
-            setIcon(<img src={right_arrow} className='icon_16' alt='Pulsa para cerrar el detalle de la competencia' />)
+            setIcon(<img src={right_arrow} className='icon_16' alt='Icono para colapsar' title='Pulsa para cerrar el detalle de la competencia' />)
         } else {
             setPulsado(true)
             setListado(<ResultadosAprendizaje ras={comp['ras']} />)
-            setIcon(<img src={down_arrow} className='icon_16' alt='Pulsa para abrir el detalle de la competencia' />)
+            setIcon(<img src={down_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
         }
         console.log(pulsado)
     }
@@ -119,6 +119,7 @@ export function MarcoCompetencias(texto) {
                 <p>{contenido['descripcionCSV']}</p>
                 <b>Competencias:</b>
                 <Competencias competencias={contenido['competencias']} />
+                <BotonExportar />
             </div>
         )
     } else {
