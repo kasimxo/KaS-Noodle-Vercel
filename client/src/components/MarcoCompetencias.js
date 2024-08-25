@@ -6,10 +6,43 @@ import { BotonExportar } from './BotonExportar'
 import right_arrow from './../static/Right_arrow_icon.png'
 import down_arrow from './../static/Down_arrow_icon.png'
 
+/*
+data-idpadre=''
+data-id=''
+data-nombrecorto=''
+data-descripcion=''
+data-descripcionformato=''
+data-valoresescala=''
+data-configuracionescala=''
+data-tiporegla=''
+data-resultadoregla=''
+data-configuracionregla=''
+data-idreferenciascruzadascompetencias=''
+data-idexportacion=''
+data-esmarcocompetencias=''
+data-taxonomia=''
+*/
+
+
 function CriterioEvaluacion(props) {
     let ce = props.valor
     return (
-        <div className='criterioEvaluacion'>
+        <div className='criterioEvaluacion'
+            data-idpadre={ce['idPadreCSV']}
+            data-id={ce['idCSV']}
+            data-nombrecorto={ce['nombreCortoCSV']}
+            data-descripcion={ce['descripcionCSV']}
+            data-descripcionformato={ce['descripcionFormatoCSV']}
+            data-valoresescala={ce['valoresEscalaCSV']}
+            data-configuracionescala={ce['configuracionEscalaCSV']}
+            data-tiporegla={ce['tipoReglaCSV']}
+            data-resultadoregla={ce['resultadoReglaCSV']}
+            data-configuracionregla={ce['configuracionReglaCSV']}
+            data-idreferenciascruzadascompetencias={ce['idReferenciasCruzadasCompetenciasCSV']}
+            data-idexportacion={ce['idExportacionCSV']}
+            data-esmarcocompetencias={ce['esMarcoCompetenciasCSV']}
+            data-taxonomia={ce['taxonomiaCV']}
+        >
             <p>{ce['nombreCortoCSV']} - {ce['descripcionCSV']}</p>
         </div>
     )
@@ -48,7 +81,22 @@ function ResultadoAprendizaje(props) {
         }
     }
     return (
-        <div className='resultadoAprendizaje'>
+        <div className='resultadoAprendizaje'
+            data-idpadre={resultadoAprendizaje['idPadreCSV']}
+            data-id={resultadoAprendizaje['idCSV']}
+            data-nombrecorto={resultadoAprendizaje['nombreCortoCSV']}
+            data-descripcion={resultadoAprendizaje['descripcionCSV']}
+            data-descripcionformato={resultadoAprendizaje['descripcionFormatoCSV']}
+            data-valoresescala={resultadoAprendizaje['valoresEscalaCSV']}
+            data-configuracionescala={resultadoAprendizaje['configuracionEscalaCSV']}
+            data-tiporegla={resultadoAprendizaje['tipoReglaCSV']}
+            data-resultadoregla={resultadoAprendizaje['resultadoReglaCSV']}
+            data-configuracionregla={resultadoAprendizaje['configuracionReglaCSV']}
+            data-idreferenciascruzadascompetencias={resultadoAprendizaje['idReferenciasCruzadasCompetenciasCSV']}
+            data-idexportacion={resultadoAprendizaje['idExportacionCSV']}
+            data-esmarcocompetencias={resultadoAprendizaje['esMarcoCompetenciasCSV']}
+            data-taxonomia={resultadoAprendizaje['taxonomiaCV']}
+        >
             <button id='btn_RA' className='btn_RA' onClick={expandirRA}>{icon} {resultadoAprendizaje['nombreCortoCSV']} - {resultadoAprendizaje['descripcionCSV']}</button>
             {listado}
         </div>
@@ -66,7 +114,7 @@ function ResultadosAprendizaje(props) {
     return (
         <div className='resultadosAprendizaje'>
             <p>Resultados de aprendizaje:</p>
-            <p>{coleccion}</p>
+            {coleccion}
         </div>
     )
 }
@@ -86,10 +134,25 @@ function Competencia(props) {
             setListado(<ResultadosAprendizaje ras={comp['ras']} />)
             setIcon(<img src={down_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
         }
-        console.log(pulsado)
+        console.log(comp['nombreCortoCSV'])
     }
     return (
-        <div className='competencia'>
+        <div className='competencia'
+            data-idpadre={comp['idPadreCSV']}
+            data-id={comp['idCSV']}
+            data-nombrecorto={comp['nombreCortoCSV']}
+            data-descripcion={comp['descripcionCSV']}
+            data-descripcionformato={comp['descripcionFormatoCSV']}
+            data-valoresescala={comp['valoresEscalaCSV']}
+            data-configuracionescala={comp['configuracionEscalaCSV']}
+            data-tiporegla={comp['tipoReglaCSV']}
+            data-resultadoregla={comp['resultadoReglaCSV']}
+            data-configuracionregla={comp['configuracionReglaCSV']}
+            data-idreferenciascruzadascompetencias={comp['idReferenciasCruzadasCompetenciasCSV']}
+            data-idexportacion={comp['idExportacionCSV']}
+            data-esmarcocompetencias={comp['esMarcoCompetenciasCSV']}
+            data-taxonomia={comp['taxonomiaCV']}
+        >
             <button id='btn_Comp' className='btn_Comp' onClick={expandirCOMP}>{icon} {comp['nombreCortoCSV']}</button>
             {listado}
         </div>
@@ -115,7 +178,22 @@ export function MarcoCompetencias(texto) {
     let { contenido } = useContext(Marco)
     if (contenido !== undefined) {
         return (
-            <div className='marco'>
+            <div className='marco'
+                data-idpadre={contenido['idPadreCSV']}
+                data-id={contenido['idCSV']}
+                data-nombrecorto={contenido['nombreCortoCSV']}
+                data-descripcion={contenido['descripcionCSV']}
+                data-descripcionformato={contenido['descripcionFormatoCSV']}
+                data-valoresescala={contenido['valoresEscalaCSV']}
+                data-configuracionescala={contenido['configuracionEscalaCSV']}
+                data-tiporegla={contenido['tipoReglaCSV']}
+                data-resultadoregla={contenido['resultadoReglaCSV']}
+                data-configuracionregla={contenido['configuracionReglaCSV']}
+                data-idreferenciascruzadascompetencias={contenido['idReferenciasCruzadasCompetenciasCSV']}
+                data-idexportacion={contenido['idExportacionCSV']}
+                data-esmarcocompetencias={contenido['esMarcoCompetenciasCSV']}
+                data-taxonomia={contenido['taxonomiaCV']}
+            >
                 <p>{contenido['descripcionCSV']}</p>
                 <b>Competencias:</b>
                 <Competencias competencias={contenido['competencias']} />

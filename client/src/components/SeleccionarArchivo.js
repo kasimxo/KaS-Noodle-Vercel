@@ -38,7 +38,7 @@ export function SeleccionarArchivo() {
                 <button id="btn_seleccionar_csv" value="seleccionar_csv" name="seleccionar_csv" className="btn_subir_archivo" onClick={not_implemented}>Seleccionar archivo csv</button>
             </article>
             <form action='#'>
-                <label for='tipo'>Tipo de documento</label>
+                <label htmlFor='tipo'>Tipo de documento</label>
                 <select name='tipos' id='tipo'>
                     <option value='BOE'>Boletín Oficial del Estado (BOE)</option>
                     <option value='BOJA'>Boletín Oficial de la junta de Andalucía (BOJA)</option>
