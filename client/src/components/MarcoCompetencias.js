@@ -28,6 +28,7 @@ function CriterioEvaluacion(props) {
     let ce = props.valor
     return (
         <div className='criterioEvaluacion'
+            data-tipo='ce'
             data-idpadre={ce['idPadreCSV']}
             data-id={ce['idCSV']}
             data-nombrecorto={ce['nombreCortoCSV']}
@@ -57,7 +58,7 @@ function CriteriosEvaluacion(props) {
         }
     })
     return (
-        <div className='criteriosEvaluacion'>
+        <div className='criteriosEvaluacion' >
             <p>Criterios de evaluación:</p>
             {coleccion}
         </div>
@@ -67,21 +68,21 @@ function CriteriosEvaluacion(props) {
 function ResultadoAprendizaje(props) {
     let resultadoAprendizaje = props.valor
     const [pulsado, setPulsado] = useState(false)
-    const [listado, setListado] = useState()
     const [icon, setIcon] = useState(<img src={right_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
+
     function expandirRA() {
         if (pulsado) {
             setPulsado(false)
-            setListado()
+
             setIcon(<img src={right_arrow} className='icon_16' alt='Icono para colapsar' title='Pulsa para cerrar el detalle de la competencia' />)
         } else {
             setPulsado(true)
-            setListado(<CriteriosEvaluacion ces={resultadoAprendizaje['criterios']} />)
             setIcon(<img src={down_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
         }
     }
     return (
         <div className='resultadoAprendizaje'
+            data-tipo='ra'
             data-idpadre={resultadoAprendizaje['idPadreCSV']}
             data-id={resultadoAprendizaje['idCSV']}
             data-nombrecorto={resultadoAprendizaje['nombreCortoCSV']}
@@ -98,7 +99,9 @@ function ResultadoAprendizaje(props) {
             data-taxonomia={resultadoAprendizaje['taxonomiaCV']}
         >
             <button id='btn_RA' className='btn_RA' onClick={expandirRA}>{icon} {resultadoAprendizaje['nombreCortoCSV']} - {resultadoAprendizaje['descripcionCSV']}</button>
-            {listado}
+            <div className={pulsado ? 'visible' : 'invisible'}>
+                <CriteriosEvaluacion ces={resultadoAprendizaje['criterios']} />
+            </div>
         </div>
     )
 }
@@ -122,22 +125,20 @@ function ResultadosAprendizaje(props) {
 function Competencia(props) {
     let comp = props.valor
     const [pulsado, setPulsado] = useState(false)
-    const [listado, setListado] = useState()
     const [icon, setIcon] = useState(<img src={right_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
     function expandirCOMP() {
         if (pulsado) {
             setPulsado(false)
-            setListado()
             setIcon(<img src={right_arrow} className='icon_16' alt='Icono para colapsar' title='Pulsa para cerrar el detalle de la competencia' />)
         } else {
             setPulsado(true)
-            setListado(<ResultadosAprendizaje ras={comp['ras']} />)
             setIcon(<img src={down_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
         }
         console.log(comp['nombreCortoCSV'])
     }
     return (
         <div className='competencia'
+            data-tipo='competencia'
             data-idpadre={comp['idPadreCSV']}
             data-id={comp['idCSV']}
             data-nombrecorto={comp['nombreCortoCSV']}
@@ -154,7 +155,9 @@ function Competencia(props) {
             data-taxonomia={comp['taxonomiaCV']}
         >
             <button id='btn_Comp' className='btn_Comp' onClick={expandirCOMP}>{icon} {comp['nombreCortoCSV']}</button>
-            {listado}
+            <div className={pulsado ? 'visible' : 'invisible'}>
+                <ResultadosAprendizaje ras={comp['ras']} />
+            </div>
         </div>
     )
 }
@@ -179,6 +182,7 @@ export function MarcoCompetencias(texto) {
     if (contenido !== undefined) {
         return (
             <div className='marco'
+                data-tipo='marco'
                 data-idpadre={contenido['idPadreCSV']}
                 data-id={contenido['idCSV']}
                 data-nombrecorto={contenido['nombreCortoCSV']}

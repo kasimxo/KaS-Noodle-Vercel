@@ -84,6 +84,19 @@ main {
 .btn_subir_archivo:hover {
     background-color:  rgb(70, 70, 70);
 }
+.btn_exportar {
+    border: 0px ;
+    background-color: rgba(23,21,22,1);
+    padding: 10px 15px 10px 15px;
+    border-radius: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: bold; 
+    font-size: 15px; 
+    font-family: Helvetica, Arial, Roboto, sans-serif; 
+}
+.btn_exportar:hover {
+    background-color:  rgb(70, 70, 70);
+}
 .panel {
     background: white; 
     border-radius: 20px;
@@ -115,6 +128,12 @@ main {
 .icon_16 {
     height: 16px;
     width: 16px;
+}
+.visible {
+    display: block;
+}
+.invisible {
+    display:none;
 }
 .competencia, .resultadosAprendizaje, .resultadoAprendizaje {
     margin: 10px;
