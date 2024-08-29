@@ -12,6 +12,7 @@ function base64toPdf(base64) {
         response = {};
 
     let file = 'archivo.pdf'
+    console.log('matches' + matches.length)
     if (matches.length !== 3) {
         return new Error('Invalid input string');
     }
@@ -215,6 +216,7 @@ function procesarTexto(text) {
 //Acepta el contenido del pdf como base64 tal y como se recibe en la petición
 export function pdfToMarco(body) {
     return new Promise(function (resolve, err) {
+
         console.log("Hemos entrado a procesar el marco")
         let file = base64toPdf(JSON.parse(body))
         let dataBuffer = fs.readFileSync(file)

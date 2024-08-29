@@ -14,6 +14,16 @@ app.use(cors())
 
 app.post('/procesadormarco', function (req, res) {
     console.log('Se va a procesar un archivo')
+    let tipo_archivo = req.header("Tipo_archivo")
+    if (tipo_archivo !== 'BOA') {
+        console.log('Solicitud de un boletín oficial todavía no implementado ' + tipo_archivo)
+        res.status(501)
+        res.end()
+        return
+    } else {
+        console.log('El tipo de archivo es válido')
+
+    }
     let body = '';
     //Leemos el base64 enviado como pdf a trozos y lo almacenamos en variable
     req.on('data', chunk => {

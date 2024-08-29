@@ -24,7 +24,8 @@ export function BotonExportar() {
         return texto
     }
     function exportar() {
-        var texto = ''
+        var cabeceras = '"Identificador padre","Identificador","Nombre corto","Descripción","Descripción del formato","Valores de escala","Configuración de escala","Tipo de regla (opcional)","Resultado de la regla (opcional)","Configuración de regla (opcional)","Identificadores de referencias cruzadas de competencias","Identificador de la exportación (opcional)","Es marco de competencias","Taxonomía"\n'
+        var texto = '' + cabeceras
         var marcos = document.querySelectorAll('[data-tipo="marco"]')
         var competencias = document.querySelectorAll('[data-tipo="competencia"]')
         var ras = document.querySelectorAll('[data-tipo="ra"]')
@@ -54,15 +55,21 @@ export function BotonExportar() {
             enlace.setAttribute('href', textFile)
             enlace.innerHTML = 'La descarga debería iniciarse automáticamente, si pasados unos segundos no ha comenzado, pincha aquí'
             document.getElementById('btn_exportar').after(enlace)
+
+            document.getElementById('downloadlink').click()
         } else {
             document.getElementById('downloadlink').href = textFile
+
+            document.getElementById('downloadlink').click()
         }
 
+
+        //Falta simular el clic para que la descarga comience automáticamente
         console.log(texto)
     }
     return (
         <div>
-            <button id="btn_exportar" value="exportar_btn" name="exportar_btn" className="btn_exportar" onClick={exportar}>
+            <button id="btn_exportar" value="exportar_btn" name="exportar_btn" className="btn_default" onClick={exportar}>
                 Exportar
             </button>
         </div>

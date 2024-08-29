@@ -6,7 +6,7 @@ body, #root, #container {
     margin: 0; 
     padding: 0; 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 p {
     color: rgba(0,0,0,0.6);
@@ -21,14 +21,18 @@ main {
 }
 #menu {
     background: rgb(23, 21, 22); 
-    height: 100%;
-    width: 10%;
-    min-width: 100px;
-    max-width: 250px;
-    padding: 25px;
+    height: 10%;
+    width: 100%;
+    min-height: 50px;
+    max-height: 250px;
+    padding-left:20px;
+    padding-right: 25px;
+    padding-top:3px;
+    padding-bottom: 2px;
+    display: inherit;
 }
 #logo_ext {
-    width: 100%;
+    height: 100%;
 }
 #message { 
     background: white; 
@@ -70,6 +74,7 @@ main {
 #seleccionarArchivo {
     width: 100%;
     display: flex;
+    flex-direction: row;
 }
 .btn_subir_archivo {
     border: 0px ;
@@ -84,7 +89,7 @@ main {
 .btn_subir_archivo:hover {
     background-color:  rgb(70, 70, 70);
 }
-.btn_exportar {
+.btn_default {
     border: 0px ;
     background-color: rgba(23,21,22,1);
     padding: 10px 15px 10px 15px;
@@ -94,7 +99,7 @@ main {
     font-size: 15px; 
     font-family: Helvetica, Arial, Roboto, sans-serif; 
 }
-.btn_exportar:hover {
+.btn_default:hover {
     background-color:  rgb(70, 70, 70);
 }
 .panel {
