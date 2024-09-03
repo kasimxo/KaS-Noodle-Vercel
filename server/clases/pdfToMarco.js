@@ -18,7 +18,7 @@ function base64toPdf(base64) {
     }
 
     //Cambiar por async
-    //Sería posible saltarse esto de alguna fomra?
+    //Sería posible saltarse esto de alguna forma?
     fs.writeFileSync(file, matches[2], 'base64')
     return file
 }

@@ -66,6 +66,10 @@ export function subirArchivoPDF() {
                 console.log("Hemos leido el pdf", file)
                 textoArchivo = JSON.stringify(reader.result)
 
+                if ((document.getElementById('tipo_archivo').value !== 'NA') && (textoArchivo != null) && (textoArchivo !== '')) {
+                    document.getElementById('btn_procesar_archivo').disabled = false
+                }
+
                 console.log("Archivo enviado")
             }
         }
