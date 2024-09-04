@@ -68,10 +68,10 @@ export function BotonExportar() {
         console.log(texto)
     }
     return (
-        <div>
-            <button id="btn_exportar" value="exportar_btn" name="exportar_btn" className="btn_default" onClick={exportar}>
-                Exportar
-            </button>
-        </div>
+
+        <button id="btn_exportar" value="exportar_btn" name="exportar_btn" className="btn_default" onClick={exportar}>
+            Exportar
+        </button>
+
     )
 }

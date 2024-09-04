@@ -24,13 +24,18 @@ function base64toPdf(base64) {
 }
 
 function limpiar(input) {
-    if (input[input.Length - 1] == '.') {
-        input = input.substring(0, input.Length - 1);
-    }
 
     if (input.startsWith("\u0003")) {
         input = input.replace("\u0003", "");
     }
+    console.log('Vamos a limpiar el input >' + input + "<")
+    //No funciona pero pretende eliminar el punto final y los espacios al final de las frases 
+    //input = input.replace("[\\s.\|.\\s]*$", "")
+    input = input.trim()
+    if (input[input.length - 1] === '.') {
+        input = input.substring(0, input.length - 1);
+    }
+    console.log(">" + input + "<")
     return input;
 }
 
@@ -69,13 +74,13 @@ function procesarTexto(text) {
     lineas.forEach((line, index) => {
         let linea = line;
         //Procesa una lína para asegurarse de que termina correctamente
-        if (linea.Length > 2) {
+        if (linea.length > 2) {
 
-            linea.substring(0, linea.Length - 1);
+            linea.substring(0, linea.length - 1);
             //Eliminamos los espacios en blanco al final de la línea
             linea = linea.replace("\\s+$", "");
 
-            if (linea.Length > 1 && (linea[linea.Length - 1] == '.' || linea[linea.Length - 1] == ':')) {
+            if (linea.length > 1 && (linea[linea.length - 1] == '.' || linea[linea.length - 1] == ':')) {
                 frase = "";
                 //Esto no tiene mucho sentido porque una línea puede terminar en un punto por casualidad
             }
@@ -90,7 +95,7 @@ function procesarTexto(text) {
             marco.denominacion = limpiar(linea.substring(linea.indexOf(":") + 1));
             marco.siglas = marco.denominacionToSiglas(marco.denominacion);
             marco.nombreCortoCSV = marco.generarNombreCorto();
-            marco.descripcionCSV = "Marco de competencias del ciclo de formación profesional: " + marco.denominacion + ".";
+            marco.descripcionCSV = marco.denominacion;
 
         }
 
@@ -228,7 +233,7 @@ export function pdfToMarco(body) {
             let marco = procesarTexto(data.text)
             marco.iniciarMarco()
 
-            console.log("Devolvemos marco:", marco)
+            //console.log("Devolvemos marco:", marco)
             resolve(marco)
         }).catch(function (err) {
             console.log("Se ha producido un error procesando el archivo pdf: ", err, err.msg)

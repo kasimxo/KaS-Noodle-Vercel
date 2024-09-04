@@ -10,10 +10,9 @@ import { BotonProcesarArchivo } from './BotonProcesarArchivo.js'
 
 
 
-export function SeleccionarArchivo() {
+export function SeleccionarArchivo(props) {
 
-
-    const { setContenido } = useContext(Marco)
+    const { escenaActual } = useContext(Marco)
     const [isDisabled, setDisabled] = useState(true)
 
 
@@ -21,20 +20,16 @@ export function SeleccionarArchivo() {
         await subirArchivoPDF()
     }
 
-    async function ProcesarPDF() {
-        console.log('Hemos pulsado procesar pdf')
-        let texto = await enviarArchivo()
-        setContenido(texto)
-    }
 
     function checkButtonDisabled() {
         if ((document.getElementById('tipo_archivo').value !== 'NA') && (textoArchivo != null) && (textoArchivo !== '')) {
             setDisabled(false)
+            console.log(isDisabled)
         }
     }
 
     return (
-        <section>
+        <section className={escenaActual === 'SeleccionarArchivo' ? 'visible' : 'invisible'}>
             <article id="archivoTipo">
                 <form action='#'>
                     <label >Tipo de documento

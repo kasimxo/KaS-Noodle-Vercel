@@ -2,6 +2,7 @@ import { useContext, useState } from 'react'
 import { Marco } from './../App'
 
 import { BotonExportar } from './BotonExportar'
+import { BotonVolverSeleccionarArchivo } from './BotonVolverSeleccionarArchivo'
 
 import right_arrow from './../static/Right_arrow_icon.png'
 import down_arrow from './../static/Down_arrow_icon.png'
@@ -177,38 +178,38 @@ function Competencias(props) {
     )
 }
 
-export function MarcoCompetencias(texto) {
-    let { contenido } = useContext(Marco)
+export function MarcoCompetencias(props) {
+    let { contenido, escenaActual } = useContext(Marco)
     if (contenido !== undefined) {
+        console.log('Estamos intentando mostrar el marco')
         return (
-            <div className='marco'
-                data-tipo='marco'
-                data-idpadre={contenido['idPadreCSV']}
-                data-id={contenido['idCSV']}
-                data-nombrecorto={contenido['nombreCortoCSV']}
-                data-descripcion={contenido['descripcionCSV']}
-                data-descripcionformato={contenido['descripcionFormatoCSV']}
-                data-valoresescala={contenido['valoresEscalaCSV']}
-                data-configuracionescala={contenido['configuracionEscalaCSV']}
-                data-tiporegla={contenido['tipoReglaCSV']}
-                data-resultadoregla={contenido['resultadoReglaCSV']}
-                data-configuracionregla={contenido['configuracionReglaCSV']}
-                data-idreferenciascruzadascompetencias={contenido['idReferenciasCruzadasCompetenciasCSV']}
-                data-idexportacion={contenido['idExportacionCSV']}
-                data-esmarcocompetencias={contenido['esMarcoCompetenciasCSV']}
-                data-taxonomia={contenido['taxonomiaCV']}
-            >
-                <p>{contenido['descripcionCSV']}</p>
-                <b>Competencias:</b>
-                <Competencias competencias={contenido['competencias']} />
-                <BotonExportar />
-            </div>
-        )
-    } else {
-        return (
-            <div className='marco'>
-                <p>Marco de competencias: Todavía no has cargado un marco de competencias</p>
-            </div>
+            <section className={escenaActual === 'MarcoCompetencias' ? 'visible' : 'invisible'}>
+                <article className='marco'
+                    data-tipo='marco'
+                    data-idpadre={contenido['idPadreCSV']}
+                    data-id={contenido['idCSV']}
+                    data-nombrecorto={contenido['nombreCortoCSV']}
+                    data-descripcion={contenido['descripcionCSV']}
+                    data-descripcionformato={contenido['descripcionFormatoCSV']}
+                    data-valoresescala={contenido['valoresEscalaCSV']}
+                    data-configuracionescala={contenido['configuracionEscalaCSV']}
+                    data-tiporegla={contenido['tipoReglaCSV']}
+                    data-resultadoregla={contenido['resultadoReglaCSV']}
+                    data-configuracionregla={contenido['configuracionReglaCSV']}
+                    data-idreferenciascruzadascompetencias={contenido['idReferenciasCruzadasCompetenciasCSV']}
+                    data-idexportacion={contenido['idExportacionCSV']}
+                    data-esmarcocompetencias={contenido['esMarcoCompetenciasCSV']}
+                    data-taxonomia={contenido['taxonomiaCV']}
+                >
+                    <p>{contenido['descripcionCSV']}</p>
+                    <b>Competencias:</b>
+                    <Competencias competencias={contenido['competencias']} />
+                </article>
+                <article className='contenedor_botones'>
+                    <BotonVolverSeleccionarArchivo />
+                    <BotonExportar />
+                </article>
+            </section>
         )
     }
 }
