@@ -58,8 +58,8 @@ export function BotonExportar() {
 
             document.getElementById('downloadlink').click()
         } else {
+            //Esto es en el caso de que ya estuviera creado el elemento
             document.getElementById('downloadlink').href = textFile
-
             document.getElementById('downloadlink').click()
         }
 

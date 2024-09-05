@@ -46,7 +46,7 @@ export function enviarArchivo() {
 }
 
 //Lee el archivo PDF y lo deja 'cargado' en el cliente
-export function subirArchivoPDF() {
+export function SubirArchivoPDF() {
 
     return new Promise((resolve) => {
 
@@ -66,11 +66,11 @@ export function subirArchivoPDF() {
                 console.log("Hemos leido el pdf", file)
                 textoArchivo = JSON.stringify(reader.result)
 
-                if ((document.getElementById('tipo_archivo').value !== 'NA') && (textoArchivo != null) && (textoArchivo !== '')) {
-                    document.getElementById('btn_procesar_archivo').disabled = false
-                }
+                document.getElementById('file_name_PDF').innerHTML = file.name
+                document.getElementById('file_name_PDF').classList.replace('invisible', 'visible')
 
-                console.log("Archivo enviado")
+                console.log("Archivo cargado")
+                resolve('success')
             }
         }
         input.click()

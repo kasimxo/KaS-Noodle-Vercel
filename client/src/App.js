@@ -9,9 +9,16 @@ export const Marco = createContext();
 const MarcoProvider = ({ children }) => {
   const [contenido, setContenido] = useState(undefined)
   const [escenaActual, setEscenaActual] = useState('SeleccionarArchivo')
+  const [procesarActivo, setProcesarActivo] = useState(false)
 
   return (
-    <Marco.Provider value={{ contenido, setContenido, escenaActual, setEscenaActual }}>{children}</Marco.Provider>
+    <Marco.Provider value={
+      {
+        contenido, setContenido,
+        escenaActual, setEscenaActual,
+        procesarActivo, setProcesarActivo
+      }
+    }>{children}</Marco.Provider>
   )
 }
 

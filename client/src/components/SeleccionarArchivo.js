@@ -2,7 +2,7 @@
 import img_pdf from './../static/pdf_icon.png'
 import img_csv from './../static/csv_icon.png'
 import { not_implemented } from './../js/script.js'
-import { subirArchivoPDF, enviarArchivo, textoArchivo } from './../js/script.js'
+import { SubirArchivoPDF, enviarArchivo, textoArchivo } from './../js/script.js'
 import { useContext, useState } from 'react'
 import { Marco } from './../App.js'
 import { BotonProcesarArchivo } from './BotonProcesarArchivo.js'
@@ -12,24 +12,23 @@ import { BotonProcesarArchivo } from './BotonProcesarArchivo.js'
 
 export function SeleccionarArchivo(props) {
 
-    const { escenaActual } = useContext(Marco)
-    const [isDisabled, setDisabled] = useState(true)
-
+    const { escenaActual, setProcesarActivo } = useContext(Marco)
 
     async function handle() {
-        await subirArchivoPDF()
+        console.log('Prueba de handle')
+        let respuesta = await SubirArchivoPDF()
+        if (respuesta === 'success') { checkButtonDisabled() }
     }
 
 
     function checkButtonDisabled() {
         if ((document.getElementById('tipo_archivo').value !== 'NA') && (textoArchivo != null) && (textoArchivo !== '')) {
-            setDisabled(false)
-            console.log(isDisabled)
+            setProcesarActivo(true)
         }
     }
 
     return (
-        <section className={escenaActual === 'SeleccionarArchivo' ? 'visible' : 'invisible'}>
+        <section className={escenaActual === 'SeleccionarArchivo' ? '' : 'invisible'}>
             <article id="archivoTipo">
                 <form action='#'>
                     <label >Tipo de documento
@@ -63,15 +62,18 @@ export function SeleccionarArchivo(props) {
                 <p>Seleccionar archivo</p>
                 <div id="pdfSelector" className="panel">
                     <img src={img_pdf} className="icon_128" alt="Icono archivo PDF" />
-                    <button id="btn_seleccionar_pdf" value="seleccionar_pdf" name="seleccionar_pdf" className="btn_subir_archivo" onClick={handle}>Seleccionar archivo pdf</button>
+                    <p id='file_name_PDF' className='invisible texto_3'></p>
+                    <button id="btn_seleccionar_pdf" value="seleccionar_pdf" name="seleccionar_pdf" className="btn_subir_archivo" onClick={handle}>Seleccionar archivo PDF</button>
+
                 </div>
                 <div id="csvSelector" className="panel" >
                     <img src={img_csv} className="icon_128" alt="Icono archivo CSV" />
-                    <button id="btn_seleccionar_csv" value="seleccionar_csv" name="seleccionar_csv" className="btn_subir_archivo" onClick={not_implemented}>Seleccionar archivo csv</button>
+                    <button id="btn_seleccionar_csv" value="seleccionar_csv" name="seleccionar_csv" className="btn_subir_archivo" onClick={not_implemented}>Seleccionar archivo CSV</button>
+                    <p id='file_name_CSV'></p>
                 </div>
             </article>
             <div className='break' />
-            <BotonProcesarArchivo buttonDisabled={isDisabled} />
+            <BotonProcesarArchivo />
         </section>
     )
 }

@@ -3,9 +3,8 @@ import { useContext, useState } from 'react'
 import { Marco } from './../App.js'
 
 export function BotonProcesarArchivo(props) {
-    let isDisabled = props.buttonDisabled
-    console.log(isDisabled)
-    const { setContenido, setEscenaActual } = useContext(Marco)
+
+    const { setContenido, setEscenaActual, procesarActivo, setProcesarActivo } = useContext(Marco)
 
     async function ProcesarPDF() {
         console.log('Hemos pulsado procesar pdf')
@@ -15,6 +14,6 @@ export function BotonProcesarArchivo(props) {
     }
 
     return (
-        <button id='btn_procesar_archivo' className='btn_default' onClick={ProcesarPDF} disabled={isDisabled}>Procesar</button>
+        <button id='btn_procesar_archivo' className='btn_default' onClick={ProcesarPDF} disabled={!procesarActivo}>Procesar</button>
     )
 }

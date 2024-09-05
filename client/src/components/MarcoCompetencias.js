@@ -183,7 +183,7 @@ export function MarcoCompetencias(props) {
     if (contenido !== undefined) {
         console.log('Estamos intentando mostrar el marco')
         return (
-            <section className={escenaActual === 'MarcoCompetencias' ? 'visible' : 'invisible'}>
+            <section className={escenaActual === 'MarcoCompetencias' ? '' : 'invisible'}>
                 <article className='marco'
                     data-tipo='marco'
                     data-idpadre={contenido['idPadreCSV']}
