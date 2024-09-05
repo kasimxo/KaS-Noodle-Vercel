@@ -31,6 +31,10 @@ label {
     display: inline-block;
 
 }
+iframe {
+    width: 100%;
+    height: 100%;
+}
 #menu {
     background: rgb(23, 21, 22); 
     height: 10%;
@@ -80,6 +84,9 @@ label {
     text-align: center; 
     font-size: 13px; 
 }
+#editarCompetencia {
+    
+}
 #seleccionarArchivo {
     width: 60%;
     display: flex;
@@ -116,6 +123,9 @@ label {
     font-weight: bold; 
     font-size: 15px; 
     font-family: Helvetica, Arial, Roboto, sans-serif; 
+    display: inline-flex;
+    align-items:center;
+    align-content: center;
 }
 .btn_default:hover {
     background-color:  rgb(70, 70, 70);
@@ -185,13 +195,6 @@ label {
 .oculto {
     visibility: hidden;
 }
-/*
-.competencia {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-}
-    */
 .competencia, .resultadosAprendizaje, .resultadoAprendizaje {
     margin: 10px;
     padding: 10px;
@@ -230,6 +233,14 @@ label {
 .marco {
     padding: 20px 0px 0px 0px;
     width: 100%;
+}
+.visualizador_pdf {
+    width: 50%;
+    height: 100%;
+}
+.competencia_editando {
+    width: 50%;
+    height: 100%;
 }
 @media (max-width: 600px) {
   body, body > div { 
