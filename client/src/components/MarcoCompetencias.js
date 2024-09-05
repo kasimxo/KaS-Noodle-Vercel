@@ -6,6 +6,7 @@ import { BotonVolverSeleccionarArchivo } from './BotonVolverSeleccionarArchivo'
 
 import right_arrow from './../static/Right_arrow_icon.png'
 import down_arrow from './../static/Down_arrow_icon.png'
+import editar_icon from './../static/editar_icon.png'
 
 /*
 data-idpadre=''
@@ -127,6 +128,7 @@ function Competencia(props) {
     let comp = props.valor
     const [pulsado, setPulsado] = useState(false)
     const [icon, setIcon] = useState(<img src={right_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
+
     function expandirCOMP() {
         if (pulsado) {
             setPulsado(false)
@@ -137,6 +139,11 @@ function Competencia(props) {
         }
         console.log(comp['nombreCortoCSV'])
     }
+
+    function editarCOMP() {
+
+    }
+
     return (
         <div className='competencia'
             data-tipo='competencia'
@@ -155,8 +162,14 @@ function Competencia(props) {
             data-esmarcocompetencias={comp['esMarcoCompetenciasCSV']}
             data-taxonomia={comp['taxonomiaCV']}
         >
-            <button id='btn_Comp' className='btn_Comp' onClick={expandirCOMP}>{icon} {comp['nombreCortoCSV']}</button>
-            <div className={pulsado ? 'visible' : 'invisible'}>
+            <div className='contenedor_botones'>
+
+                <button id='btn_Comp' className='btn_Comp' onClick={expandirCOMP}>{icon} {comp['nombreCortoCSV']}</button>
+                <button id='btn_editar' className='btn_default' onClick={editarCOMP}>
+                    <img src={editar_icon} className='icon_16' alt='Icono de edición' title='Pulsa para editar la competencia' /> editar
+                </button>
+            </div>
+            <div className={pulsado ? 'ancho' : 'invisible'}>
                 <ResultadosAprendizaje ras={comp['ras']} />
             </div>
         </div>

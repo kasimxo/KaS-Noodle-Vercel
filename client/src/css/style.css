@@ -123,8 +123,12 @@ label {
 .btn_default:disabled {
     background-color:  rgb(70, 70, 70);
 }
+.ancho {
+    width: 100%;
+}
 .break {
     flex-basis: 100%;
+    width: 100%;
     height: 0;
 }
 .contenedor_botones {
@@ -181,6 +185,13 @@ label {
 .oculto {
     visibility: hidden;
 }
+/*
+.competencia {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+    */
 .competencia, .resultadosAprendizaje, .resultadoAprendizaje {
     margin: 10px;
     padding: 10px;
