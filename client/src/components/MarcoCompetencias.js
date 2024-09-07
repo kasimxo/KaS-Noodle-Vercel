@@ -75,7 +75,6 @@ function ResultadoAprendizaje(props) {
     function expandirRA() {
         if (pulsado) {
             setPulsado(false)
-
             setIcon(<img src={right_arrow} className='icon_16' alt='Icono para colapsar' title='Pulsa para cerrar el detalle de la competencia' />)
         } else {
             setPulsado(true)
@@ -124,7 +123,7 @@ function ResultadosAprendizaje(props) {
     )
 }
 
-export function Competencia(props) {
+function Competencia(props) {
     let comp = props.valor
     const { setEscenaActual, setCompetencia } = useContext(Marco)
     const [pulsado, setPulsado] = useState(false)

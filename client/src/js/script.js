@@ -46,6 +46,7 @@ export function enviarArchivo() {
 }
 
 //Lee el archivo PDF y lo deja 'cargado' en el cliente
+//Devuelve la ruta del archivo
 export function SubirArchivoPDF() {
 
     return new Promise((resolve) => {
@@ -56,7 +57,7 @@ export function SubirArchivoPDF() {
 
         input.onchange = e => {
             var file = e.target.files[0]
-
+            console.log(file)
             var reader = new FileReader()
 
             reader.readAsDataURL(file);
@@ -70,7 +71,7 @@ export function SubirArchivoPDF() {
                 document.getElementById('file_name_PDF').classList.replace('invisible', 'visible')
 
                 console.log("Archivo cargado")
-                resolve('success')
+                resolve(file)
             }
         }
         input.click()

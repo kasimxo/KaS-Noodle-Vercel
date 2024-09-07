@@ -8,7 +8,7 @@ import { useState, createContext, useContext } from 'react'
 export const Marco = createContext();
 
 const MarcoProvider = ({ children }) => {
-  //E
+  //Guarda la respuesta del servidor, es decir, el marco ya procesado
   const [contenido, setContenido] = useState(undefined)
   //La escena actual:
   // - Cargar archivo
@@ -19,6 +19,8 @@ const MarcoProvider = ({ children }) => {
   //Competencia que estamos editando
   const [competencia, setCompetencia] = useState()
   const [procesarActivo, setProcesarActivo] = useState(false)
+  //Guarda la ruta del archivo para poder visualizarlo en edición
+  const [rutaArchivo, setRutaArchivo] = useState()
 
   return (
     <Marco.Provider value={
@@ -26,7 +28,8 @@ const MarcoProvider = ({ children }) => {
         contenido, setContenido,
         escenaActual, setEscenaActual,
         procesarActivo, setProcesarActivo,
-        competencia, setCompetencia
+        competencia, setCompetencia,
+        rutaArchivo, setRutaArchivo
       }
     }>{children}</Marco.Provider>
   )

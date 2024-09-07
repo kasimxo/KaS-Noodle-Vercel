@@ -12,12 +12,17 @@ import { BotonProcesarArchivo } from './BotonProcesarArchivo.js'
 
 export function SeleccionarArchivo(props) {
 
-    const { escenaActual, setProcesarActivo } = useContext(Marco)
+    const {
+        escenaActual, setProcesarActivo,
+        setRutaArchivo
+    } = useContext(Marco)
 
     async function handle() {
         console.log('Prueba de handle')
         let respuesta = await SubirArchivoPDF()
-        if (respuesta === 'success') { checkButtonDisabled() }
+        setRutaArchivo(respuesta)
+        checkButtonDisabled()
+        //if (respuesta === 'success') { checkButtonDisabled() }
     }
 
 
