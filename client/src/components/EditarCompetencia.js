@@ -1,6 +1,9 @@
 import { useContext, useState } from "react"
 import { Marco } from "../App"
 
+import { BotonVolverEscena } from './BotonVolverEscena'
+import { BotonGuardarCambios } from './BotonGuardarCambios'
+
 import right_arrow from './../static/Right_arrow_icon.png'
 import down_arrow from './../static/Down_arrow_icon.png'
 
@@ -26,6 +29,10 @@ export function EditarCompetencia() {
             </article>
             <article id='competenciaEditando'>
                 {competencia_node}
+            </article>
+            <article>
+                <BotonVolverEscena escena='MarcoCompetencias' />
+                <BotonGuardarCambios />
             </article>
         </section>
     )

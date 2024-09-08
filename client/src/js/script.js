@@ -71,7 +71,7 @@ export function SubirArchivoPDF() {
                 document.getElementById('file_name_PDF').classList.replace('invisible', 'visible')
 
                 console.log("Archivo cargado")
-                resolve(file)
+                resolve(reader.result)
             }
         }
         input.click()

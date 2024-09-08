@@ -2,7 +2,7 @@ import { useContext, useState } from 'react'
 import { Marco } from './../App'
 
 import { BotonExportar } from './BotonExportar'
-import { BotonVolverSeleccionarArchivo } from './BotonVolverSeleccionarArchivo'
+import { BotonVolverEscena } from './BotonVolverEscena'
 
 import right_arrow from './../static/Right_arrow_icon.png'
 import down_arrow from './../static/Down_arrow_icon.png'
@@ -220,7 +220,7 @@ export function MarcoCompetencias(props) {
                     <Competencias competencias={contenido['competencias']} />
                 </article>
                 <article className='contenedor_botones'>
-                    <BotonVolverSeleccionarArchivo />
+                    <BotonVolverEscena escena='SeleccionarArchivo' />
                     <BotonExportar />
                 </article>
             </section>
