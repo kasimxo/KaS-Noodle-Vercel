@@ -1,17 +1,40 @@
 import { useContext, useState } from "react"
 import { Marco } from "../App"
 
+import { pdfjs, Document, Page } from 'react-pdf'
+
+
 import { BotonVolverEscena } from './BotonVolverEscena'
 import { BotonGuardarCambios } from './BotonGuardarCambios'
 
 import right_arrow from './../static/Right_arrow_icon.png'
 import down_arrow from './../static/Down_arrow_icon.png'
 
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+    'pdfjs-dist/build/pdf.worker.min.mjs',
+    import.meta.url,
+).toString();
+
+const options = {
+    cMapUrl: '/cmaps/',
+    standardFontDataUrl: '/standard_fonts/',
+};
+
+
 export function EditarCompetencia() {
+
+    const [numPages, setNumPages] = useState();
+    const [containerRef, setContainerRef] = useState(null);
+    const [containerWidth, setContainerWidth] = useState();
+    const [currPage, setCurrPage] = useState(1)
+
+    const maxWidth = document.getElementById('visualizador_pdf').width
+
     const { escenaActual, setEscenaActual,
         competencia, setCompetencia,
         rutaArchivo
     } = useContext(Marco)
+
     var competencia_node
     if (competencia !== undefined) {
         competencia_node = <Competencia valor={competencia} />
@@ -19,10 +42,27 @@ export function EditarCompetencia() {
         competencia_node = ''
     }
 
+    function onDocumentLoadSuccess({ numPages: nextNumPages }) {
+        setNumPages(nextNumPages);
+    }
+
+    function nextPage() {
+        setCurrPage(currPage + 1)
+    }
+
     return (
         <section id='editarCompetencia' className={escenaActual === 'EditarCompetencia' ? '' : 'invisible'}>
             <article id='visualizador_pdf' className="visualizador_pdf">
-                <iframe className="visualizador_pdf"
+                {/* Boton para avanzar pag*/}
+                <button onClick={nextPage}>1/50</button>
+                <Document file={rutaArchivo} onLoadSuccess={onDocumentLoadSuccess} options={options}>
+                    <Page
+                        key={`page_${currPage}`}
+                        pageNumber={currPage}
+                        width={maxWidth}
+                    />
+                </Document>
+                <iframe className="visualizador_pdf invisible"
                     src={rutaArchivo}
                     title='PDF original'>
                 </iframe>
@@ -30,7 +70,7 @@ export function EditarCompetencia() {
             <article id='competenciaEditando'>
                 {competencia_node}
             </article>
-            <article>
+            <article className='contenedor_botones'>
                 <BotonVolverEscena escena='MarcoCompetencias' />
                 <BotonGuardarCambios />
             </article>
