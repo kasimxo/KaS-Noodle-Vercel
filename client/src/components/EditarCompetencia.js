@@ -28,8 +28,6 @@ export function EditarCompetencia() {
     const [containerWidth, setContainerWidth] = useState();
     const [currPage, setCurrPage] = useState(1)
 
-    const maxWidth = document.getElementById('visualizador_pdf').width
-
     const { escenaActual, setEscenaActual,
         competencia, setCompetencia,
         rutaArchivo
@@ -59,7 +57,7 @@ export function EditarCompetencia() {
                     <Page
                         key={`page_${currPage}`}
                         pageNumber={currPage}
-                        width={maxWidth}
+
                     />
                 </Document>
                 <iframe className="visualizador_pdf invisible"

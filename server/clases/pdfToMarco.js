@@ -28,14 +28,12 @@ function limpiar(input) {
     if (input.startsWith("\u0003")) {
         input = input.replace("\u0003", "");
     }
-    console.log('Vamos a limpiar el input >' + input + "<")
     //No funciona pero pretende eliminar el punto final y los espacios al final de las frases 
     //input = input.replace("[\\s.\|.\\s]*$", "")
     input = input.trim()
     if (input[input.length - 1] === '.') {
         input = input.substring(0, input.length - 1);
     }
-    console.log(">" + input + "<")
     return input;
 }
 

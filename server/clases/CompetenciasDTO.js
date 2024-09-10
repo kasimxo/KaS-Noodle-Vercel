@@ -55,6 +55,7 @@ export class CompetenciaDTO {
         this.idExportacionCSV ??= ""; //Opcional
         this.esMarcoCompetenciasCSV ??= ""; //Solo ciclo
         this.taxonomiaCSV ??= ""; //Solo ciclo
+
     }
 
     iniciarCompetencia(identificadorPadre, identificador, cardinalidad, nombreCiclo) {

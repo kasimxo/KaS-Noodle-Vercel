@@ -162,6 +162,7 @@ function Competencia(props) {
             data-idexportacion={comp['idExportacionCSV']}
             data-esmarcocompetencias={comp['esMarcoCompetenciasCSV']}
             data-taxonomia={comp['taxonomiaCV']}
+            data-pagina={comp['pag']}
         >
             <div className='contenedor_botones'>
 
@@ -195,7 +196,6 @@ function Competencias(props) {
 export function MarcoCompetencias(props) {
     let { contenido, escenaActual } = useContext(Marco)
     if (contenido !== undefined) {
-        console.log('Estamos intentando mostrar el marco')
         return (
             <section className={escenaActual === 'MarcoCompetencias' ? '' : 'invisible'}>
                 <article className='marco'
@@ -214,6 +214,7 @@ export function MarcoCompetencias(props) {
                     data-idexportacion={contenido['idExportacionCSV']}
                     data-esmarcocompetencias={contenido['esMarcoCompetenciasCSV']}
                     data-taxonomia={contenido['taxonomiaCV']}
+
                 >
                     <p>{contenido['descripcionCSV']}</p>
                     <b>Competencias:</b>

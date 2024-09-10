@@ -77,7 +77,3 @@ export function SubirArchivoPDF() {
         input.click()
     })
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    //const loadEl = document.querySelector('#load');
-});
