@@ -36,10 +36,10 @@ iframe {
     height: 100%;
 }
 #visualizador_pdf {
-    width: 50%;
+    width: auto; 
 }
 #competenciaEditando {
-    width: 50%;
+    width: 40%;
 }
 #menu {
     background: rgb(23, 21, 22); 
@@ -56,35 +56,6 @@ iframe {
 #logo_ext {
     height: 100%;
 }
-#message { 
-    background: white; 
-    max-width: 360px; 
-    margin: 100px auto 16px; 
-    padding: 32px 24px; 
-    border-radius: 3px; 
-}
-#message h2 { 
-    color: #ffa100; 
-    font-weight: bold; 
-    font-size: 16px; 
-    margin: 0 0 8px; }
-#message h1 { 
-    font-size: 22px; 
-    font-weight: 300; 
-    color: rgba(0,0,0,0.6); 
-    margin: 0 0 16px;}
-
-#message a { 
-    display: block; 
-    text-align: center; 
-    background: #039be5; 
-    text-transform: uppercase; 
-    text-decoration: none; 
-    color: white; 
-    padding: 16px; 
-    border-radius: 4px; }
-#message, #message a { 
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
 #load { 
     color: rgba(0,0,0,0.4); 
     text-align: center; 
@@ -94,6 +65,11 @@ iframe {
     flex-direction: row;
     justify-content: space-between;
     height: inherit;
+}
+#navegadorPdfContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 #seleccionarArchivo {
     width: 60%;

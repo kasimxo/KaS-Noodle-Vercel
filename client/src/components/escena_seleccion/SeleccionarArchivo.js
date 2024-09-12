@@ -1,14 +1,12 @@
 
-import img_pdf from './../static/pdf_icon.png'
-import img_csv from './../static/csv_icon.png'
-import { not_implemented } from './../js/script.js'
-import { SubirArchivoPDF, enviarArchivo, textoArchivo } from './../js/script.js'
+import { not_implemented } from '../../js/script.js'
+import { SubirArchivoPDF, enviarArchivo, textoArchivo } from '../../js/script.js'
 import { useContext, useState } from 'react'
-import { Marco } from './../App.js'
-import { BotonProcesarArchivo } from './BotonProcesarArchivo.js'
+import { Marco } from '../../App.js'
+import { BotonProcesarArchivo } from '../BotonProcesarArchivo.js'
 
-
-
+import img_pdf from './../../static/pdf_icon.png'
+import img_csv from './../../static/csv_icon.png'
 
 export function SeleccionarArchivo(props) {
 
@@ -20,6 +18,7 @@ export function SeleccionarArchivo(props) {
     async function handle() {
         console.log('Prueba de handle')
         let respuesta = await SubirArchivoPDF()
+        console.log(respuesta)
         setRutaArchivo(respuesta)
         checkButtonDisabled()
         //if (respuesta === 'success') { checkButtonDisabled() }

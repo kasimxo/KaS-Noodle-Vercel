@@ -1,37 +1,44 @@
 import { useContext, useState } from "react"
-import { Marco } from "../App"
+import { Marco } from "../../App"
+import 'react-pdf/dist/Page/TextLayer.css'
+import 'react-pdf/dist/Page/AnnotationLayer.css';
 
 import { pdfjs, Document, Page } from 'react-pdf'
 
+import { BotonVolverEscena } from '../BotonVolverEscena'
+import { BotonGuardarCambios } from '../BotonGuardarCambios'
+import { NavegadorPdf } from "./NavegadorPdf"
 
-import { BotonVolverEscena } from './BotonVolverEscena'
-import { BotonGuardarCambios } from './BotonGuardarCambios'
-
-import right_arrow from './../static/Right_arrow_icon.png'
-import down_arrow from './../static/Down_arrow_icon.png'
+import right_arrow from './../../static/Right_arrow_icon.png'
+import down_arrow from './../../static/Down_arrow_icon.png'
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
     'pdfjs-dist/build/pdf.worker.min.mjs',
     import.meta.url,
 ).toString();
-
+/*
 const options = {
     cMapUrl: '/cmaps/',
     standardFontDataUrl: '/standard_fonts/',
 };
+*/
+const options = {}
 
 
 export function EditarCompetencia() {
 
-    const [numPages, setNumPages] = useState();
-    const [containerRef, setContainerRef] = useState(null);
-    const [containerWidth, setContainerWidth] = useState();
-    const [currPage, setCurrPage] = useState(1)
 
     const { escenaActual, setEscenaActual,
         competencia, setCompetencia,
-        rutaArchivo
+        rutaArchivo,
+        currPage, setCurrPage
     } = useContext(Marco)
+
+
+    const [numPages, setNumPages] = useState();
+    const [containerRef, setContainerRef] = useState(null);
+    const [containerWidth, setContainerWidth] = useState();
+
 
     var competencia_node
     if (competencia !== undefined) {
@@ -44,26 +51,19 @@ export function EditarCompetencia() {
         setNumPages(nextNumPages);
     }
 
-    function nextPage() {
-        setCurrPage(currPage + 1)
-    }
 
     return (
         <section id='editarCompetencia' className={escenaActual === 'EditarCompetencia' ? '' : 'invisible'}>
             <article id='visualizador_pdf' className="visualizador_pdf">
+                <NavegadorPdf />
                 {/* Boton para avanzar pag*/}
-                <button onClick={nextPage}>1/50</button>
-                <Document file={rutaArchivo} onLoadSuccess={onDocumentLoadSuccess} options={options}>
-                    <Page
-                        key={`page_${currPage}`}
-                        pageNumber={currPage}
 
+                <Document file={rutaArchivo} onLoadSuccess={onDocumentLoadSuccess} >
+                    <Page
+                        pageNumber={currPage}
+                        scale={1}
                     />
                 </Document>
-                <iframe className="visualizador_pdf invisible"
-                    src={rutaArchivo}
-                    title='PDF original'>
-                </iframe>
             </article>
             <article id='competenciaEditando'>
                 {competencia_node}
@@ -180,7 +180,7 @@ function ResultadosAprendizaje(props) {
 
 function Competencia(props) {
     let comp = props.valor
-    const { setEscenaActual, setCompetencia } = useContext(Marco)
+    const { setEscenaActual, setCompetencia, setCurrPage } = useContext(Marco)
     const [pulsado, setPulsado] = useState(false)
     const [icon, setIcon] = useState(<img src={right_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
 
@@ -193,11 +193,6 @@ function Competencia(props) {
             setIcon(<img src={down_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
         }
         console.log(comp['nombreCortoCSV'])
-    }
-
-    function editarCOMP() {
-        setCompetencia(props.valor)
-        setEscenaActual('EditarCompetencia')
     }
 
     return (
@@ -217,6 +212,7 @@ function Competencia(props) {
             data-idexportacion={comp['idExportacionCSV']}
             data-esmarcocompetencias={comp['esMarcoCompetenciasCSV']}
             data-taxonomia={comp['taxonomiaCV']}
+            data-pagina={comp['pag']}
         >
             <div className='contenedor_botones'>
                 <button id='btn_Comp' className='btn_Comp' onClick={expandirCOMP}>{icon} {comp['nombreCortoCSV']}</button>
