@@ -1,15 +1,19 @@
-"# KaS-Noodle-Vercel" 
+# Noodle
 
-Easy set up through terminal:
+Noodle permite a los profesores de formación profesional analizar y procesar boletines oficiales de forma eficiente, extrayendo la información relevante sin pérdida de datos. Esto reduce de forma significativa el tiempo dedicado a la lectura y análisis manual de documentos oficiales, además de ofrecer mecanismos de integración con Moodle, una de las principales plataformas educativas. 
 
-cd to each directory
+Set-up por la terminal:
 
-In client directory => npm start
+git clone https://github.com/kasimxo/KaS-Noodle-Vercel.git
 
-In server directory => npm run watch
+cd a cada directorio
 
-Credits:
+En la carpeta client => npm start
 
-This app relies heavily in pdf-parse for text extraction from pdf files.
+En la carpeta server => npm run watch
 
-Pdf-parse is a node module created by mehmet.kozan (you can find it here: https://www.npmjs.com/package/pdf-parse), but this project uses a fork created (that was never merged :c ) by designly1 which support individual page text extraction
+Créditos:
+
+Noodle utiliza pdf-parse para extraer el texto de los documentos pdf.
+
+pdf-parse es un módulo creado por mehmet.kozan (puedes encontrar el módulo original aquí: https://www.npmjs.com/package/pdf-parse), pero en este proyecto se utiliza un fork creado (que nunca fue implementado :c ) por designly1.Este fork permite extraer el texto de cada una de las páginas por separado.
