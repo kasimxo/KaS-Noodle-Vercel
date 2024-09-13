@@ -1,6 +1,6 @@
-import { subirArchivoPDF, enviarArchivo, textoArchivo } from './../js/script.js'
+import { subirArchivoPDF, enviarArchivo, textoArchivo } from '../../js/script.js'
 import { useContext, useState } from 'react'
-import { Marco } from './../App.js'
+import { Marco } from '../../App.js'
 
 export function BotonProcesarArchivo(props) {
 

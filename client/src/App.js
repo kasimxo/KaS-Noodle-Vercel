@@ -20,6 +20,8 @@ const MarcoProvider = ({ children }) => {
   const [competencia, setCompetencia] = useState()
   //La página a la que pertenece la competencia que estamos editando
   const [currPage, setCurrPage] = useState(0)
+  //El total de páginas del archivo que estamos editando
+  const [totPaginas, setTotPaginas] = useState(0)
   const [procesarActivo, setProcesarActivo] = useState(false)
   //Guarda la ruta del archivo para poder visualizarlo en edición
   const [rutaArchivo, setRutaArchivo] = useState()
@@ -32,7 +34,8 @@ const MarcoProvider = ({ children }) => {
         procesarActivo, setProcesarActivo,
         competencia, setCompetencia,
         rutaArchivo, setRutaArchivo,
-        currPage, setCurrPage
+        currPage, setCurrPage,
+        totPaginas, setTotPaginas
       }
     }>{children}</Marco.Provider>
   )

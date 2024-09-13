@@ -57,7 +57,7 @@ export function SubirArchivoPDF() {
 
         input.onchange = e => {
             var file = e.target.files[0]
-            console.log(file)
+
             var reader = new FileReader()
 
             reader.readAsDataURL(file);
@@ -66,7 +66,6 @@ export function SubirArchivoPDF() {
 
                 console.log("Hemos leido el pdf", file)
                 textoArchivo = JSON.stringify(reader.result)
-
                 document.getElementById('file_name_PDF').innerHTML = file.name
                 document.getElementById('file_name_PDF').classList.replace('invisible', 'visible')
 
