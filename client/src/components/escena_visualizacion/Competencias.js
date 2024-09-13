@@ -68,9 +68,12 @@ function Competencia(props) {
             <div className='contenedor_botones'>
 
                 <button id='btn_Comp' className='btn_Comp' onClick={expandirCOMP}>{icon} {comp['nombreCortoCSV']}</button>
-                <button id='btn_editar' className='btn_default' onClick={editarCOMP}>
-                    <img src={editar_icon} className='icon_16' alt='Icono de edición' title='Pulsa para editar la competencia' /> &nbsp;editar
-                </button>
+                <div>
+                    <input type='checkbox' />
+                    <button id='btn_editar' className='btn_default' onClick={editarCOMP}>
+                        <img src={editar_icon} className='icon_16' alt='Icono de edición' title='Pulsa para editar la competencia' /> &nbsp;editar
+                    </button>
+                </div>
             </div>
             <div className={pulsado ? 'ancho' : 'invisible'}>
                 <ResultadosAprendizaje ras={comp['ras']} />

@@ -78,6 +78,9 @@ label {
 #csvSelector {
     display:none;
 }
+.texto_3 {
+    font-size: 14px;
+}
 .btn_subir_archivo {
     border: 0px ;
     background-color: rgba(23,21,22,1);
@@ -167,7 +170,7 @@ label {
     visibility: hidden;
 }
 .competencia {
-    margin: 10px;
+    margin: 10px 0px 0px 0px;
     padding: 10px;
     background-color: white;
     border-radius: 20px;
