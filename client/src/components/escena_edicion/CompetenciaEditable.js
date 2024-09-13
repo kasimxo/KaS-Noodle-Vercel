@@ -27,11 +27,9 @@ export function CompetenciaEditable(props) {
             data-pagina={comp['pag']}
         >
             <div className='contenedor_botones'>
-                <button id='btn_Comp' className='btn_Comp' > {comp['nombreCortoCSV']}</button>
+                <button id='btn_Comp' className='btn_Comp_Editable' > {comp['nombreCortoCSV']}</button>
             </div>
-            <div className={'ancho'}>
-                <ResultadosAprendizajeEditable ras={comp['ras']} />
-            </div>
+            <ResultadosAprendizajeEditable ras={comp['ras']} />
         </div>
     )
 }

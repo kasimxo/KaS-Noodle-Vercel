@@ -66,6 +66,7 @@ export function EditarCompetencia() {
                     />
                 </Document>
             </article>
+
             {competencia_node}
 
             <article className='contenedor_botones'>

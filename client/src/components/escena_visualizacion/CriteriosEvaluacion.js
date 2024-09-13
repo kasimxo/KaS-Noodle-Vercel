@@ -18,7 +18,7 @@ function CriterioEvaluacion(props) {
             data-esmarcocompetencias={ce['esMarcoCompetenciasCSV']}
             data-taxonomia={ce['taxonomiaCV']}
         >
-            <p>{ce['nombreCortoCSV']} - {ce['descripcionCSV']}</p>
+            <p>{ce['descripcionCSV']}</p>
         </div>
     )
 }

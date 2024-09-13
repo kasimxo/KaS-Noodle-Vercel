@@ -140,13 +140,7 @@ label {
 .panel:hover {
     transform: scale(1.1);
 }
-.texto_3 {
-    color: rgba(0,0,0,0.6);
-    font-weight: bold; 
-    font-size: 12px; 
-    font-family: Roboto, Helvetica, Arial, sans-serif; 
-    margin: 0px;
-}
+
 .icon_128 {
     height: 128px;
     width: 128px;
@@ -172,17 +166,38 @@ label {
 .oculto {
     visibility: hidden;
 }
-.competencia, .resultadosAprendizaje, .resultadoAprendizaje {
+.competencia {
     margin: 10px;
     padding: 10px;
     background-color: white;
     border-radius: 20px;
 }
-.criteriosEvaluacion {
-    margin-left: 10px;
+.resultadosAprendizaje, .resultadoAprendizaje {
     padding: 10px;
 }
-.criterioEvaluacion {
+.horizontal {
+    display: flex;
+    justify-items: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+}
+.resultadosAprendizaje_editable {
+    
+    overflow:auto;
+    height: 100%;
+}
+.competencia_editable, .resultadosAprendizaje_editable, .resultadoAprendizaje_editable {
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    height: 100%;
+}
+.criteriosEvaluacion, .criterioEvaluacion {
+    margin-left: 10px;
+    padding: 6px;
+}
+.criterioEvaluacion_editable, .criterioEvaluacion_editable {
     margin-left: 10px;
     margin-top: 5px;
 }
@@ -196,7 +211,24 @@ label {
 .btn_Comp, .btn_RA {
     background-color: transparent;
     border: 0;
+    color: rgba(0,0,0,0.6);
+    text-align: left;
+    font-weight: bold;
+    font-family: Roboto, Helvetica, Arial, sans-serif; 
+}
+.btn_Comp_Editable {
+    font-size: 16px;
+}
+.btn_RA_Editable, .text_RA_Editable {
+    font-size: 14px;
+}
+.btn_CE_Editable, .text_CE_Editable {
+    font-size: 12px;
+}
+.btn_Comp_Editable, .btn_RA_Editable, .text_RA_Editable, .btn_CE_Editable, .text_CE_Editable {
     
+    background-color: transparent;
+    border: 0;
     color: rgba(0,0,0,0.6);
     text-align: left;
     font-weight: bold;
@@ -204,19 +236,32 @@ label {
 }
 .btn_Comp:hover, .btn_RA:hover {
     cursor:pointer;
-    
+    color: rgba(0,0,0,1);
+}
+.btn_Comp_Editable:hover, .btn_RA_Editable:hover, .btn_CE_Editable:hover {
+    cursor:pointer;
     color: rgba(0,0,0,1);
 }
 .marco {
     padding: 20px 0px 0px 0px;
     width: 100%;
 }
+.padding_10{
+    padding: 5px 10px 0px 10px;
+}
+.padding {
+    padding: 5px;
+}
 .visualizador_pdf {
-    width: 50%;
-    height: 100%;
+    flex:none;
 }
 .competenciaEditable {
-    
+    height: 100%;
+    flex: 1;
+    color: rgba(0,0,0,0.6);
+    font-weight: bold; 
+    font-size: 12px; 
+    font-family: Roboto, Helvetica, Arial, sans-serif; 
 }
 .competencia_editando {
     width: 50%;

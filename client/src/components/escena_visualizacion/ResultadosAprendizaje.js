@@ -38,7 +38,7 @@ function ResultadoAprendizaje(props) {
             data-esmarcocompetencias={resultadoAprendizaje['esMarcoCompetenciasCSV']}
             data-taxonomia={resultadoAprendizaje['taxonomiaCV']}
         >
-            <button id='btn_RA' className='btn_RA' onClick={expandirRA}>{icon} {resultadoAprendizaje['nombreCortoCSV']} - {resultadoAprendizaje['descripcionCSV']}</button>
+            <button id='btn_RA' className='btn_RA' onClick={expandirRA}>{icon} {resultadoAprendizaje['descripcionCSV']}</button>
             <div className={pulsado ? 'visible' : 'invisible'}>
                 <CriteriosEvaluacion ces={resultadoAprendizaje['criterios']} />
             </div>

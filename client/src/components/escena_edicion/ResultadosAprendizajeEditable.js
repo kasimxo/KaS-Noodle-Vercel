@@ -1,9 +1,24 @@
 import { useState } from "react"
 import { CriteriosEvaluacionEditable } from "./CriteriosEvaluacionEditable"
 
+import right_arrow from './../../static/Right_arrow_icon.png'
+import down_arrow from './../../static/Down_arrow_icon.png'
+
 function ResultadoAprendizajeEditable(props) {
     let resultadoAprendizaje = props.valor
+
     const [pulsado, setPulsado] = useState(false)
+    const [icon, setIcon] = useState(<img src={right_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
+
+    function expandirRA() {
+        if (pulsado) {
+            setPulsado(false)
+            setIcon(<img src={right_arrow} className='icon_16' alt='Icono para colapsar' title='Pulsa para cerrar el detalle de la competencia' />)
+        } else {
+            setPulsado(true)
+            setIcon(<img src={down_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
+        }
+    }
 
     return (
         <div className='resultadoAprendizaje'
@@ -23,8 +38,11 @@ function ResultadoAprendizajeEditable(props) {
             data-esmarcocompetencias={resultadoAprendizaje['esMarcoCompetenciasCSV']}
             data-taxonomia={resultadoAprendizaje['taxonomiaCV']}
         >
-            <button id='btn_RA' className='btn_RA' >{resultadoAprendizaje['nombreCortoCSV']} - {resultadoAprendizaje['descripcionCSV']}</button>
-            <div className={'visible'}>
+            <div className="horizontal">
+                <button id='btn_RA' className='btn_RA_Editable' onClick={expandirRA}>{icon}</button>
+                <button id='btn_RA' className='btn_RA_Editable' >{resultadoAprendizaje['descripcionCSV']}</button>
+            </div>
+            <div className={pulsado ? 'visible padding_10' : 'invisible'}>
                 <CriteriosEvaluacionEditable ces={resultadoAprendizaje['criterios']} />
             </div>
         </div>
@@ -40,8 +58,8 @@ export function ResultadosAprendizajeEditable(props) {
         }
     })
     return (
-        <div className='resultadosAprendizaje'>
-            <p>Resultados de aprendizaje:</p>
+        <div className='resultadosAprendizaje_editable'>
+            <p className="text_RA_Editable">Resultados de aprendizaje:</p>
             {coleccion}
         </div>
     )

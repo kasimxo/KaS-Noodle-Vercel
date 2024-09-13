@@ -2,7 +2,7 @@
 function CriterioEvaluacionEditable(props) {
     let ce = props.valor
     return (
-        <div className='criterioEvaluacion'
+        <div className='criterioEvaluacion_editable'
             data-tipo='ce'
             data-idpadre={ce['idPadreCSV']}
             data-id={ce['idCSV']}
@@ -19,7 +19,8 @@ function CriterioEvaluacionEditable(props) {
             data-esmarcocompetencias={ce['esMarcoCompetenciasCSV']}
             data-taxonomia={ce['taxonomiaCV']}
         >
-            <p>{ce['nombreCortoCSV']} - {ce['descripcionCSV']}</p>
+            <button className="btn_CE_Editable">{ce['descripcionCSV']}</button>
+            <p></p>
         </div>
     )
 }
@@ -33,8 +34,8 @@ export function CriteriosEvaluacionEditable(props) {
         }
     })
     return (
-        <div className='criteriosEvaluacion' >
-            <p>Criterios de evaluación:</p>
+        <div className='criteriosEvaluacion_editable' >
+            <p className="text_CE_Editable">Criterios de evaluación:</p>
             {coleccion}
         </div>
     )
