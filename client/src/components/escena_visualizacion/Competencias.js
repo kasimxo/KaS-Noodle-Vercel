@@ -1,5 +1,7 @@
-import { useContext, useState } from "react"
+import { useContext, useState, memo } from "react"
 import { Marco } from "../../App"
+import { EscenaVisualizacion } from "./MarcoCompetencias"
+
 import { ResultadosAprendizaje } from "./ResultadosAprendizaje"
 
 import right_arrow from './../../static/Right_arrow_icon.png'
@@ -9,6 +11,8 @@ import editar_icon from './../../static/editar_icon.png'
 export function Competencias(props) {
     let competencias = props.competencias
     let coleccion = []
+
+
     Object.keys(competencias).forEach(key => {
         if (key) {
             coleccion.push(<Competencia valor={competencias[key]} />)
@@ -25,8 +29,10 @@ export function Competencias(props) {
 function Competencia(props) {
     let comp = props.valor
     const { setEscenaActual, setCompetencia, setCurrPage } = useContext(Marco)
+    const { competenciasSeleccionadas, setCompetenciasSeleccionadas } = useContext(EscenaVisualizacion)
     const [pulsado, setPulsado] = useState(false)
     const [icon, setIcon] = useState(<img src={right_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
+
 
     function expandirCOMP() {
         if (pulsado) {
@@ -45,6 +51,12 @@ function Competencia(props) {
         setCurrPage(c['pag'])
         setEscenaActual('EditarCompetencia')
     }
+
+    const calcularSeleccionadas = (event) => {
+        let seleccionadas = document.querySelectorAll('input[type="checkbox"]:checked')
+        setCompetenciasSeleccionadas(seleccionadas.length)
+    }
+
 
     return (
         <div className='competencia'
@@ -66,18 +78,26 @@ function Competencia(props) {
             data-pagina={comp['pag']}
         >
             <div className='contenedor_botones'>
-
-                <button id='btn_Comp' className='btn_Comp' onClick={expandirCOMP}>{icon} {comp['nombreCortoCSV']}</button>
                 <div>
-                    <input type='checkbox' />
-                    <button id='btn_editar' className='btn_default' onClick={editarCOMP}>
-                        <img src={editar_icon} className='icon_16' alt='Icono de edición' title='Pulsa para editar la competencia' /> &nbsp;editar
-                    </button>
+                    <input type='checkbox' onChange={calcularSeleccionadas} />
+
+                    <button id='btn_Comp' className='btn_Comp' onClick={expandirCOMP}>{icon} {comp['nombreCortoCSV']}</button>
                 </div>
+                <button id='btn_editar' className='btn_default' onClick={editarCOMP}>
+                    <img src={editar_icon} className='icon_16' alt='Icono de edición' title='Pulsa para editar la competencia' /> &nbsp;editar
+                </button>
             </div>
-            <div className={pulsado ? 'ancho' : 'invisible'}>
-                <ResultadosAprendizaje ras={comp['ras']} />
-            </div>
+            <Ras ras={comp['ras']} pulsado={pulsado} />
         </div>
     )
 }
+
+const Ras = memo(function Ras(props) {
+    let pulsado = props.pulsado
+    let ras = props.ras
+    return (
+        <div className={pulsado ? 'ancho' : 'invisible'}>
+            <ResultadosAprendizaje ras={ras} />
+        </div>
+    )
+})
