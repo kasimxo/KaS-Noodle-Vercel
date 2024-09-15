@@ -29,7 +29,10 @@ export function Competencias(props) {
 function Competencia(props) {
     let comp = props.valor
     const { setEscenaActual, setCompetencia, setCurrPage } = useContext(Marco)
-    const { competenciasSeleccionadas, setCompetenciasSeleccionadas } = useContext(EscenaVisualizacion)
+    const {
+        competenciasSeleccionadasNum, setCompetenciasSeleccionadasNum,
+        competenciasSeleccionadas, setCompetenciasSeleccionadas
+    } = useContext(EscenaVisualizacion)
     const [pulsado, setPulsado] = useState(false)
     const [icon, setIcon] = useState(<img src={right_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
 
@@ -53,8 +56,24 @@ function Competencia(props) {
     }
 
     const calcularSeleccionadas = (event) => {
+
+        //Primero actualizamos el indicador de competencias seleccionadas
         let seleccionadas = document.querySelectorAll('input[type="checkbox"]:checked')
-        setCompetenciasSeleccionadas(seleccionadas.length)
+        setCompetenciasSeleccionadasNum(seleccionadas.length)
+
+        //Ahora añadimos o quitamos la competencia a la colección
+        let competenciaClicada = event.target.closest('[data-tipo="competencia"]')
+        let id = competenciaClicada.dataset.id
+
+        console.log()
+        if (event.target.checked && !competenciasSeleccionadas.hasOwnProperty(id)) {
+            //ponerlo
+            competenciasSeleccionadas[id] = competenciaClicada
+        } else if (competenciasSeleccionadas.hasOwnProperty(id)) {
+            //quitarlo
+            delete competenciasSeleccionadas[id]
+        }
+        console.log(competenciasSeleccionadas)
     }
 
 

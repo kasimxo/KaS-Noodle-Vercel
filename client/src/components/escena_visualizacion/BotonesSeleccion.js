@@ -3,14 +3,24 @@ import { EscenaVisualizacion } from "./MarcoCompetencias"
 
 export function BotonesSeleccion() {
 
-    let { competenciasSeleccionadas, setCompetenciasSeleccionadas } = useContext(EscenaVisualizacion)
+    let {
+        competenciasSeleccionadasNum, setCompetenciasSeleccionadasNum,
+        competenciasSeleccionadas, setCompetenciasSeleccionadas
+    } = useContext(EscenaVisualizacion)
 
     function seleccionarTodo() {
         var selectores = document.querySelectorAll('input[type="checkbox"]')
+
         selectores.forEach((element) => {
             element.checked = true
+            let competenciaClicada = element.closest('[data-tipo="competencia"]')
+            let id = competenciaClicada.dataset.id
+
+            if (!competenciasSeleccionadas.hasOwnProperty(id)) {
+                competenciasSeleccionadas[id] = competenciaClicada
+            }
         })
-        setCompetenciasSeleccionadas(selectores.length)
+        setCompetenciasSeleccionadasNum(selectores.length)
     }
 
     function limpiarSeleccion() {
@@ -18,7 +28,10 @@ export function BotonesSeleccion() {
         selectores.forEach((element) => {
             element.checked = false
         })
-        setCompetenciasSeleccionadas(0)
+        Object.keys(competenciasSeleccionadas).forEach(key => {
+            delete competenciasSeleccionadas[key]
+        })
+        setCompetenciasSeleccionadasNum(0)
     }
 
     return (

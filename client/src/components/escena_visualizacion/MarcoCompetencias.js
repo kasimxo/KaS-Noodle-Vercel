@@ -25,12 +25,17 @@ data-taxonomia=''
 
 export const EscenaVisualizacion = createContext()
 
+//Se puede hacer que las competencias para exportar se almacenen dentro del contexto
+
 const EscenaVisualizacionProvider = ({ children }) => {
-    const [competenciasSeleccionadas, setCompetenciasSeleccionadas] = useState(0)
+    const [competenciasSeleccionadasNum, setCompetenciasSeleccionadasNum] = useState(0)
+    //Un diccionario que almacena todas las competencias listas para exportarse
+    const [competenciasSeleccionadas, setCompetenciasSeleccionadas] = useState({})
 
     return (
         <EscenaVisualizacion.Provider value={
             {
+                competenciasSeleccionadasNum, setCompetenciasSeleccionadasNum,
                 competenciasSeleccionadas, setCompetenciasSeleccionadas
             }
         }>
@@ -83,8 +88,8 @@ export function MarcoCompetencias(props) {
 }
 
 function IndicadorCompetenciasSeleccionadas() {
-    let { competenciasSeleccionadas } = useContext(EscenaVisualizacion)
+    let { competenciasSeleccionadasNum } = useContext(EscenaVisualizacion)
     return (
-        <b>Competencias: {competenciasSeleccionadas} competencias seleccionadas</b>
+        <b>Competencias: {competenciasSeleccionadasNum} competencias seleccionadas</b>
     )
 }
