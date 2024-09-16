@@ -1,6 +1,7 @@
 import { useState, useContext } from "react"
 import { Marco } from "../../App"
 import { ResultadosAprendizajeEditable } from "./ResultadosAprendizajeEditable"
+import { TextoEditable } from "./TextoEditable"
 
 export function CompetenciaEditable(props) {
     let comp = props.valor
@@ -27,9 +28,11 @@ export function CompetenciaEditable(props) {
             data-pagina={comp['pag']}
         >
             <div className='contenedor_botones'>
-                <button id='btn_Comp' className='btn_Comp_Editable' > {comp['nombreCortoCSV']}</button>
+                <TextoEditable texto={comp['nombreCortoCSV']} id={comp['idCSV']} clases={'btn_Comp_Editable'} />
             </div>
             <ResultadosAprendizajeEditable ras={comp['ras']} />
         </div>
     )
 }
+/**
+                 */

@@ -73,7 +73,6 @@ function Competencia(props) {
             //quitarlo
             delete competenciasSeleccionadas[id]
         }
-        console.log(competenciasSeleccionadas)
     }
 
 
@@ -99,7 +98,6 @@ function Competencia(props) {
             <div className='contenedor_botones'>
                 <div>
                     <input type='checkbox' onChange={calcularSeleccionadas} />
-
                     <button id='btn_Comp' className='btn_Comp' onClick={expandirCOMP}>{icon} {comp['nombreCortoCSV']}</button>
                 </div>
                 <button id='btn_editar' className='btn_default' onClick={editarCOMP}>

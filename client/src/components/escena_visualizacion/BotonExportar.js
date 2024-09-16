@@ -1,39 +1,49 @@
+import { useContext } from "react"
+import { EscenaVisualizacion } from "./MarcoCompetencias"
+
 export function BotonExportar() {
+
+    let { competenciasSeleccionadas, setCompetenciasSeleccionadas } = useContext(EscenaVisualizacion)
+
     /// añade al texto las propiedades del objeto tal y como pide Moodle
-    function concatenar(texto, objetos) {
+    function concatenar(texto, objeto) {
+        console.log(objeto)
+        var linea = ''
+        linea += '"' + objeto.dataset.idpadre + '","'
+            + objeto.dataset.id + '","'
+            + objeto.dataset.nombrecorto + '","'
+            + objeto.dataset.descripcion + '","'
+            + objeto.dataset.descripcionformato + '","'
+            + objeto.dataset.valoresescala + '","'
+            + objeto.dataset.configuracionescala + '","'
+            + objeto.dataset.tiporegla + '","'
+            + objeto.dataset.resultadoregla + '","'
+            + objeto.dataset.configuracionregla + '","'
+            + objeto.dataset.idreferenciascruzadascompetencias + '","'
+            + objeto.dataset.idexportacion + '","'
+            + objeto.dataset.esmarcocompetencias + '","'
+            + objeto.dataset.taxonomia + '"\n'
+        texto += linea
 
-        objetos.forEach(objeto => {
-
-            var linea = ''
-            linea += '"' + objeto.dataset.idpadre + '","'
-                + objeto.dataset.id + '","'
-                + objeto.dataset.nombrecorto + '","'
-                + objeto.dataset.descripcion + '","'
-                + objeto.dataset.descripcionformato + '","'
-                + objeto.dataset.valoresescala + '","'
-                + objeto.dataset.configuracionescala + '","'
-                + objeto.dataset.tiporegla + '","'
-                + objeto.dataset.resultadoregla + '","'
-                + objeto.dataset.configuracionregla + '","'
-                + objeto.dataset.idreferenciascruzadascompetencias + '","'
-                + objeto.dataset.idexportacion + '","'
-                + objeto.dataset.esmarcocompetencias + '","'
-                + objeto.dataset.taxonomia + '"\n'
-            texto += linea
-        })
         return texto
     }
     function exportar() {
         var cabeceras = '"Identificador padre","Identificador","Nombre corto","Descripción","Descripción del formato","Valores de escala","Configuración de escala","Tipo de regla (opcional)","Resultado de la regla (opcional)","Configuración de regla (opcional)","Identificadores de referencias cruzadas de competencias","Identificador de la exportación (opcional)","Es marco de competencias","Taxonomía"\n'
         var texto = '' + cabeceras
         var marcos = document.querySelectorAll('[data-tipo="marco"]')
-        var competencias = document.querySelectorAll('[data-tipo="competencia"]')
-        var ras = document.querySelectorAll('[data-tipo="ra"]')
-        var ces = document.querySelectorAll('[data-tipo="ce"]')
-        texto = concatenar(texto, marcos)
-        texto = concatenar(texto, competencias)
-        texto = concatenar(texto, ras)
-        texto = concatenar(texto, ces)
+
+        marcos.forEach((marco) => { texto = concatenar(texto, marco) })
+
+        Object.keys(competenciasSeleccionadas).forEach((key) => { texto = concatenar(texto, competenciasSeleccionadas[key]) })
+
+        Object.keys(competenciasSeleccionadas).forEach((key) => {
+            var resultados = competenciasSeleccionadas[key].querySelectorAll('[data-tipo="ra"]')
+            resultados.forEach((el) => {
+                texto = concatenar(texto, el)
+                var criterios = el.querySelectorAll('[data-tipo="ce"]')
+                criterios.forEach((ce) => { texto = concatenar(texto, ce) })
+            })
+        })
 
         var textFile = null
         var data = new Blob([texto], { type: 'text/plain' });
@@ -63,9 +73,6 @@ export function BotonExportar() {
             document.getElementById('downloadlink').click()
         }
 
-
-        //Falta simular el clic para que la descarga comience automáticamente
-        console.log(texto)
     }
     return (
 

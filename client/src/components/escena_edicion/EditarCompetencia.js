@@ -7,10 +7,11 @@ import 'react-pdf/dist/Page/AnnotationLayer.css';
 import { pdfjs, Document, Page } from 'react-pdf'
 
 import { BotonVolverEscena } from '../BotonVolverEscena'
-import { BotonGuardarCambios } from '../BotonGuardarCambios'
+import { BotonGuardarCambios } from './BotonGuardarCambios'
 import { NavegadorPdf } from "./NavegadorPdf"
 
 import right_arrow from './../../static/Right_arrow_icon.png'
+import left_arrow from './../../static/Left_arrow_icon.png'
 import down_arrow from './../../static/Down_arrow_icon.png'
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -40,7 +41,9 @@ export function EditarCompetencia() {
     const [numPages, setNumPages] = useState();
     const [containerRef, setContainerRef] = useState(null);
     const [containerWidth, setContainerWidth] = useState();
+    const [pdfShown, setPdfShown] = useState(false)
 
+    //if ((rutaArchivo === undefined) || (rutaArchivo === '')) { setPdfShown(false) }
 
     var competencia_node
     if (competencia !== undefined) {
@@ -54,19 +57,31 @@ export function EditarCompetencia() {
         setTotPaginas(nextNumPages)
     }
 
+    function mostrarPdf() {
+        if (pdfShown) {
+            setPdfShown(false)
+        } else {
+            setPdfShown(true)
+        }
+    }
 
     return (
         <section id='editarCompetencia' className={escenaActual === 'EditarCompetencia' ? '' : 'invisible'}>
-            <article id='visualizador_pdf' className="visualizador_pdf">
+            <article id='visualizador_pdf' className={pdfShown ? "visualizador_pdf visible" : "invisible"} >
                 <NavegadorPdf numPages={numPages} />
-                <Document file={rutaArchivo} onLoadSuccess={onDocumentLoadSuccess} >
-                    <Page
-                        pageNumber={currPage}
-                        scale={1}
-                    />
-                </Document>
+                <div className="boxShadow">
+                    <Document file={rutaArchivo} onLoadSuccess={onDocumentLoadSuccess} >
+                        <Page
+                            pageNumber={currPage}
+                            scale={1}
+                        />
+                    </Document>
+                </div>
             </article>
 
+            <button onClick={mostrarPdf} className="btn_transparente">
+                <img src={pdfShown ? left_arrow : right_arrow} alt='Mostrar pdf origen' title="Mostrar/ocultar pdf origen" className="icon_32"></img>
+            </button>
             {competencia_node}
 
             <article className='contenedor_botones'>

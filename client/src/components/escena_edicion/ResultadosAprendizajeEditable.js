@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { CriteriosEvaluacionEditable } from "./CriteriosEvaluacionEditable"
+import { TextoEditable } from "./TextoEditable"
 
 import right_arrow from './../../static/Right_arrow_icon.png'
 import down_arrow from './../../static/Down_arrow_icon.png'
@@ -40,7 +41,7 @@ function ResultadoAprendizajeEditable(props) {
         >
             <div className="horizontal">
                 <button id='btn_RA' className='btn_RA_Editable' onClick={expandirRA}>{icon}</button>
-                <button id='btn_RA' className='btn_RA_Editable' >{resultadoAprendizaje['descripcionCSV']}</button>
+                <TextoEditable texto={resultadoAprendizaje['descripcionCSV']} id={resultadoAprendizaje['idCSV']} clases={'btn_RA_Editable'} />
             </div>
             <div className={pulsado ? 'visible padding_10' : 'invisible'}>
                 <CriteriosEvaluacionEditable ces={resultadoAprendizaje['criterios']} />
@@ -48,6 +49,8 @@ function ResultadoAprendizajeEditable(props) {
         </div>
     )
 }
+/* 
+*/
 
 export function ResultadosAprendizajeEditable(props) {
     let ras = props.ras

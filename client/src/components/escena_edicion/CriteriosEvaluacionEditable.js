@@ -1,3 +1,4 @@
+import { TextoEditable } from "./TextoEditable"
 
 function CriterioEvaluacionEditable(props) {
     let ce = props.valor
@@ -19,8 +20,7 @@ function CriterioEvaluacionEditable(props) {
             data-esmarcocompetencias={ce['esMarcoCompetenciasCSV']}
             data-taxonomia={ce['taxonomiaCV']}
         >
-            <button className="btn_CE_Editable">{ce['descripcionCSV']}</button>
-            <p></p>
+            <TextoEditable texto={ce['descripcionCSV']} id={ce['idCSV']} clases={'btn_CE_Editable'} />
         </div>
     )
 }

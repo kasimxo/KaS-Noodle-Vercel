@@ -58,6 +58,7 @@ label {
     flex-direction: row;
     justify-content: space-between;
     height: inherit;
+    padding-top: 10px ;
 }
 #navegadorPdfContainer{
     display: flex;
@@ -244,9 +245,19 @@ label {
     cursor:pointer;
     color: rgba(0,0,0,1);
 }
-.btn_Comp_Editable:hover, .btn_RA_Editable:hover, .btn_CE_Editable:hover {
+.btn_Comp_Editable:hover, .btn_RA_Editable:hover, .btn_CE_Editable:hover, .btn_transparente:hover {
     cursor:pointer;
     color: rgba(0,0,0,1);
+}
+.btn_transparente {
+    border:0;
+    background-color: transparent;
+}
+.contenedor_componentes_editables {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 .marco {
     padding: 20px 0px 0px 0px;
@@ -260,6 +271,9 @@ label {
 }
 .visualizador_pdf {
     flex:none;
+}
+.boxShadow {
+    box-shadow: 0px 0px 3px black;
 }
 .competenciaEditable {
     height: 100%;
