@@ -43,18 +43,40 @@ const MarcoProvider = ({ children }) => {
 
 function App() {
 
+
   return (
     <div id="container">
       <Menu />
       <main >
         <MarcoProvider>
-          <SeleccionarArchivo />
-          <MarcoCompetencias />
-          <EditarCompetencia />
+          <Escena />
         </MarcoProvider>
       </main>
     </div>
   );
+}
+
+function Escena() {
+  const { escenaActual } = useContext(Marco)
+
+  let escena = <SeleccionarArchivo />
+
+  switch (escenaActual) {
+    case 'EditarCompetencia':
+      escena = <EditarCompetencia />
+      break
+    case 'MarcoCompetencias':
+      escena = <MarcoCompetencias />
+      break
+    case 'SeleccionarArchivo':
+      escena = <SeleccionarArchivo />
+      break
+    default:
+      escena = <SeleccionarArchivo />
+      break
+  }
+
+  return (escena)
 }
 
 export default App;
