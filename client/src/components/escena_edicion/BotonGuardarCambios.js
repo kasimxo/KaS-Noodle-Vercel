@@ -15,7 +15,7 @@ export function BotonGuardarCambios(props) {
 
         var componente = {
             nombre: "",
-            pag: Elemento.dataset.pagina,
+            pag: Elemento.dataset.pagina * 1,
 
             idPadreCSV: Elemento.dataset.idpadre,
             idCSV: Elemento.dataset.id,
@@ -32,6 +32,8 @@ export function BotonGuardarCambios(props) {
             esMarcoCompetenciasCSV: Elemento.dataset.esmarcocompetencias,
             taxonomiaCSV: Elemento.dataset.taxonomia
         }
+
+
         switch (tipo) {
             case 'competencia':
                 componente['nombreCortoCSV'] = denominacion

@@ -37,8 +37,6 @@ export function EditarCompetencia() {
         totPaginas, setTotPaginas
     } = useContext(Marco)
 
-    console.log(competencia)
-
     const [numPages, setNumPages] = useState();
     const [containerRef, setContainerRef] = useState(null);
     const [containerWidth, setContainerWidth] = useState();
@@ -71,10 +69,11 @@ export function EditarCompetencia() {
             <article id='visualizador_pdf' className={pdfShown ? "visualizador_pdf visible" : "invisible"} >
                 <NavegadorPdf numPages={numPages} />
                 <div className="boxShadow">
-                    <Document file={rutaArchivo} onLoadSuccess={onDocumentLoadSuccess} >
+                    <Document file={rutaArchivo} onLoadSuccess={onDocumentLoadSuccess} onLoadError={(error) => alert('Error while loading document! ' + error.message)}>
                         <Page
                             pageNumber={currPage}
                             scale={1}
+                            error={typeof currPage}
                         />
                     </Document>
                 </div>
