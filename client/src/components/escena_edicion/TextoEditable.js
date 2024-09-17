@@ -1,9 +1,9 @@
 import { useState } from "react"
 
 export function TextoEditable(props) {
-    var texto = props.texto + props.id
+    var texto = props.texto
     let id = props.id
-    let clases = props.clases + ' visible'
+    let clases = props.clases + ' visible contenido'
 
     //Variable que controla si estamos editando o no
     const [editando, setEditando] = useState(false)
@@ -13,7 +13,6 @@ export function TextoEditable(props) {
         let originalText = document.querySelector('#' + id + '_btn_Comp')
         inputText.value = originalText.innerHTML
         setEditando(true)
-        console.log('hemos disparado editar')
     }
 
     function guardarCambios() {
@@ -22,13 +21,10 @@ export function TextoEditable(props) {
 
         originalText.innerHTML = inputText.value
         setEditando(false)
-
-        console.log('hemos disparado guardar cambios')
     }
 
     function cancelarCambios() {
         setEditando(false)
-        console.log('hemos disparado cancelar cambios')
     }
 
 

@@ -37,6 +37,7 @@ export function EditarCompetencia() {
         totPaginas, setTotPaginas
     } = useContext(Marco)
 
+    console.log(competencia)
 
     const [numPages, setNumPages] = useState();
     const [containerRef, setContainerRef] = useState(null);
