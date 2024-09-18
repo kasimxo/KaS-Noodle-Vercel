@@ -1,6 +1,6 @@
 
 import { not_implemented } from '../../js/script.js'
-import { SubirArchivoPDF, enviarArchivo, textoArchivo } from '../../js/script.js'
+import { SubirArchivoPDF, textoArchivo, SubirArchivoCSV } from '../../js/script.js'
 import { useContext, useState } from 'react'
 import { Marco } from '../../App.js'
 import { BotonProcesarArchivo } from './BotonProcesarArchivo.js'
@@ -17,11 +17,21 @@ export function SeleccionarArchivo(props) {
         tipoArchivo, setTipoArchivo
     } = useContext(Marco)
 
-    async function handle() {
+    async function handlePDF() {
         let respuesta = await SubirArchivoPDF()
         setRutaArchivo(respuesta)
         setTipoArchivo('pdf')
         checkButtonDisabled()
+    }
+
+    async function handleCSV() {
+        let respuesta = await SubirArchivoCSV()
+        setTipoArchivo('csv')
+        setProcesarActivo(true)
+        /*let respuesta = await SubirArchivoPDF()
+                setRutaArchivo(respuesta)
+                setTipoArchivo('pdf')
+                checkButtonDisabled() */
     }
 
     function checkButtonDisabled() {
@@ -36,21 +46,21 @@ export function SeleccionarArchivo(props) {
             <article id="seleccionarArchivo">
                 <div className='ancho'>
                     <p>Seleccionar archivo</p>
-
                 </div>
-                <div id="pdfSelector" className='panel_horizontal'>
+                <div id="pdfSelector" className={tipoArchivo === 'csv' ? 'invisible' : 'panel_horizontal'} >
                     <div className='flex_vertical'>
                         <img src={img_pdf} className="icon_128" alt="Icono archivo PDF" />
                         <p id='file_name_PDF' className='invisible texto_3'></p>
-                        <button id="btn_seleccionar_pdf" value="seleccionar_pdf" name="seleccionar_pdf" className="btn_subir_archivo" onClick={handle}>Seleccionar archivo PDF</button>
+                        <button id="btn_seleccionar_pdf" value="seleccionar_pdf" name="seleccionar_pdf" className="btn_subir_archivo" onClick={handlePDF}>Seleccionar archivo PDF</button>
                     </div>
                     <TipoArchivo />
                     <BotonQuitarArchivo />
                 </div>
                 <div id="csvSelector" className={tipoArchivo === 'pdf' ? 'invisible' : "panel"} >
                     <img src={img_csv} className="icon_128" alt="Icono archivo CSV" />
-                    <button id="btn_seleccionar_csv" value="seleccionar_csv" name="seleccionar_csv" className="btn_subir_archivo" onClick={not_implemented}>Seleccionar archivo CSV</button>
-                    <p id='file_name_CSV'></p>
+                    <p id='file_name_CSV' className='invisible texto_3'></p>
+                    <button id="btn_seleccionar_csv" value="seleccionar_csv" name="seleccionar_csv" className="btn_subir_archivo" onClick={handleCSV}>Seleccionar archivo CSV</button>
+                    <BotonQuitarArchivo />
                 </div>
             </article>
             <div className='break' />
@@ -70,7 +80,11 @@ function BotonQuitarArchivo() {
     function quitarArchivo() {
 
         if (tipoArchivo === 'pdf') {
-            var textEl = document.querySelector('#file_name_PDF')
+            let textEl = document.querySelector('#file_name_PDF')
+            textEl.textContent = ''
+            textEl.classList.replace('visible', 'invisible')
+        } else if (tipoArchivo === 'csv') {
+            let textEl = document.querySelector('#file_name_CSV')
             textEl.textContent = ''
             textEl.classList.replace('visible', 'invisible')
         }
@@ -79,11 +93,26 @@ function BotonQuitarArchivo() {
         setRutaArchivo()
         setTipoArchivo()
     }
-    return (
-        <button onClick={quitarArchivo} className={tipoArchivo === 'pdf' ? 'btn_cancelar' : 'invisible'} >
-            <img src={img_cancelar} className='icon_16' alt='Cancelar' title='Cancelar' />
-        </button>
-    )
+
+    if (tipoArchivo === 'pdf') {
+        return (
+            <div className='alto'>
+                <button onClick={quitarArchivo} className={tipoArchivo === 'pdf' ? 'btn_cancelar' : 'invisible'} >
+                    <img src={img_cancelar} className='icon_16' alt='Cancelar' title='Cancelar' />
+                </button>
+            </div>
+        )
+    } else if (tipoArchivo === 'csv') {
+        return (
+            <div className='alto'>
+                <button onClick={quitarArchivo} className={tipoArchivo === 'csv' ? 'btn_cancelar' : 'invisible'} >
+                    <img src={img_cancelar} className='icon_16' alt='Cancelar' title='Cancelar' />
+                </button>
+            </div>
+        )
+    } else {
+        return
+    }
 }
 
 function TipoArchivo() {
@@ -102,6 +131,8 @@ function TipoArchivo() {
         <article id="archivoTipo" className={rutaArchivo === undefined ? 'invisible' : 'visible'}>
             <form action='#'>
                 <label >Tipo de documento
+                    <br />
+                    <br />
                     <select name='tipos' id='tipo_archivo' onChange={checkButtonDisabled}>
                         <option value='NA'>-</option>
                         <option value='BOE'>Boletín Oficial del Estado (BOE)</option>

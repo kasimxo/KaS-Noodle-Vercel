@@ -76,3 +76,32 @@ export function SubirArchivoPDF() {
         input.click()
     })
 }
+
+export function SubirArchivoCSV() {
+    return new Promise((resolve) => {
+
+        var input = document.createElement('input')
+        input.type = 'file'
+        input.accept = '.csv'
+
+        input.onchange = e => {
+            var file = e.target.files[0]
+
+            var reader = new FileReader()
+
+            reader.readAsDataURL(file);
+
+            reader.onload = () => {
+
+                console.log("Hemos leido el csv", file)
+                textoArchivo = JSON.stringify(reader.result)
+                document.getElementById('file_name_CSV').innerHTML = file.name
+                document.getElementById('file_name_CSV').classList.replace('invisible', 'visible')
+
+                console.log("Archivo cargado")
+                resolve(reader.result)
+            }
+        }
+        input.click()
+    })
+}
