@@ -16,4 +16,5 @@ Créditos:
 
 Noodle utiliza pdf-parse para extraer el texto de los documentos pdf.
 
-pdf-parse es un módulo creado por mehmet.kozan (puedes encontrar el módulo original aquí: https://www.npmjs.com/package/pdf-parse), pero en este proyecto se utiliza un fork creado (que nunca fue implementado :c ) por designly1.Este fork permite extraer el texto de cada una de las páginas por separado.
+Pdf-parse es un módulo de Nodejs creado por mehmet.kozan (puedes encontrar el módulo original aquí: https://www.npmjs.com/package/pdf-parse), pero en este proyecto se utiliza un fork creado (que nunca fue implementado :c ) por designly1.
+Este fork permite extraer el texto de cada una de las páginas por separado.

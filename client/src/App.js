@@ -25,6 +25,8 @@ const MarcoProvider = ({ children }) => {
   const [procesarActivo, setProcesarActivo] = useState(false)
   //Guarda la ruta del archivo para poder visualizarlo en edición
   const [rutaArchivo, setRutaArchivo] = useState()
+  //Si es un archivo PDF o CSV
+  const [tipoArchivo, setTipoArchivo] = useState()
 
   return (
     <Marco.Provider value={
@@ -35,7 +37,8 @@ const MarcoProvider = ({ children }) => {
         competencia, setCompetencia,
         rutaArchivo, setRutaArchivo,
         currPage, setCurrPage,
-        totPaginas, setTotPaginas
+        totPaginas, setTotPaginas,
+        tipoArchivo, setTipoArchivo
       }
     }>{children}</Marco.Provider>
   )

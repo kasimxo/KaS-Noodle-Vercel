@@ -28,6 +28,11 @@ export function BotonExportar() {
         return texto
     }
     function exportar() {
+        if (Object.keys(competenciasSeleccionadas).length < 1) {
+            alert('No hay ninguna competencia seleccionada, por favor, selecciona las competencias que desees exportar.')
+            return
+        }
+
         var cabeceras = '"Identificador padre","Identificador","Nombre corto","Descripción","Descripción del formato","Valores de escala","Configuración de escala","Tipo de regla (opcional)","Resultado de la regla (opcional)","Configuración de regla (opcional)","Identificadores de referencias cruzadas de competencias","Identificador de la exportación (opcional)","Es marco de competencias","Taxonomía"\n'
         var texto = '' + cabeceras
         var marcos = document.querySelectorAll('[data-tipo="marco"]')
