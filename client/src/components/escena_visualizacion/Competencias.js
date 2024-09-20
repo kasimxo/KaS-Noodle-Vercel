@@ -65,7 +65,6 @@ function Competencia(props) {
         let competenciaClicada = event.target.closest('[data-tipo="competencia"]')
         let id = competenciaClicada.dataset.id
 
-        console.log()
         if (event.target.checked && !competenciasSeleccionadas.hasOwnProperty(id)) {
             //ponerlo
             competenciasSeleccionadas[id] = competenciaClicada

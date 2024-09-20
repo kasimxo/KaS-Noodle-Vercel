@@ -12,7 +12,6 @@ export function BotonProcesarArchivo(props) {
     } = useContext(Marco)
 
     async function Procesar() {
-        console.log('Hemos pulsado procesar', tipoArchivo)
 
         if (tipoArchivo === 'pdf') {
             let texto = await enviarArchivoPDF()

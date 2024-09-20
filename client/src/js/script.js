@@ -35,7 +35,6 @@ export function enviarArchivoCSV() {
                 resolve('Error')
             }
         })
-        console.log("Archivo enviado")
     })
 }
 
@@ -72,7 +71,6 @@ export function enviarArchivoPDF() {
                 resolve('Error')
             }
         })
-        console.log("Archivo enviado")
     })
 }
 
@@ -124,12 +122,10 @@ export function SubirArchivoCSV() {
 
             reader.onload = () => {
 
-                console.log("Hemos leido el csv", file, reader.result)
                 textoArchivo = reader.result
                 document.getElementById('file_name_CSV').innerHTML = file.name
                 document.getElementById('file_name_CSV').classList.replace('invisible', 'visible')
 
-                console.log("Archivo cargado")
                 resolve(reader.result)
             }
         }
