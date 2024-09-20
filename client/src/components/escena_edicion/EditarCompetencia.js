@@ -34,6 +34,7 @@ export function EditarCompetencia() {
         competencia, setCompetencia,
         rutaArchivo,
         currPage, setCurrPage,
+        tipoArchivo,
         totPaginas, setTotPaginas
     } = useContext(Marco)
 
@@ -79,7 +80,7 @@ export function EditarCompetencia() {
                 </div>
             </article>
 
-            <button onClick={mostrarPdf} className="btn_transparente">
+            <button onClick={mostrarPdf} className={tipoArchivo === 'csv' ? 'invisible' : "btn_transparente"} >
                 <img src={pdfShown ? left_arrow : right_arrow} alt='Mostrar pdf origen' title="Mostrar/ocultar pdf origen" className="icon_32"></img>
             </button>
             {competencia_node}

@@ -1,4 +1,4 @@
-import { subirArchivoPDF, enviarArchivo, textoArchivo } from '../js/script.js'
+import { subirArchivoPDF, enviarArchivoPDF, textoArchivo } from '../js/script.js'
 import { useContext, useState } from 'react'
 import { Marco } from '../App.js'
 

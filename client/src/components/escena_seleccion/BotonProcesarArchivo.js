@@ -1,19 +1,32 @@
-import { subirArchivoPDF, enviarArchivo, textoArchivo } from '../../js/script.js'
+import { enviarArchivoPDF, enviarArchivoCSV } from '../../js/script.js'
 import { useContext, useState } from 'react'
 import { Marco } from '../../App.js'
 
 export function BotonProcesarArchivo(props) {
 
-    const { setContenido, setEscenaActual, procesarActivo, setProcesarActivo } = useContext(Marco)
+    const {
+        setContenido,
+        setEscenaActual,
+        procesarActivo,
+        tipoArchivo
+    } = useContext(Marco)
 
-    async function ProcesarPDF() {
-        console.log('Hemos pulsado procesar pdf')
-        let texto = await enviarArchivo()
-        setContenido(texto)
-        setEscenaActual('MarcoCompetencias')
+    async function Procesar() {
+        console.log('Hemos pulsado procesar', tipoArchivo)
+
+        if (tipoArchivo === 'pdf') {
+            let texto = await enviarArchivoPDF()
+            setContenido(texto)
+            setEscenaActual('MarcoCompetencias')
+        } else if (tipoArchivo === 'csv') {
+            let texto = await enviarArchivoCSV()
+            setContenido(texto)
+            setEscenaActual('MarcoCompetencias')
+        }
+
     }
 
     return (
-        <button id='btn_procesar_archivo' className='btn_default' onClick={ProcesarPDF} disabled={!procesarActivo}>Procesar</button>
+        <button id='btn_procesar_archivo' className='btn_default' onClick={Procesar} disabled={!procesarActivo}>Procesar</button>
     )
 }

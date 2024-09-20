@@ -1,3 +1,4 @@
+import { ResultadoAprendizajeDTO } from "./ResultadoAprendizajeDTO.js"
 export class CompetenciaDTO {
 
     ras
@@ -20,10 +21,16 @@ export class CompetenciaDTO {
     taxonomiaCSV
 
     constructor(nombre, index) {
-        this.nombre = nombre.trim();
-        this.pag = index;
-        this.ras = {}
-        this.nombreCortoCSV = nombre.trim();
+
+        if (nombre !== undefined) {
+            this.nombre = nombre.trim();
+            this.pag = index;
+            this.ras = {}
+            this.nombreCortoCSV = nombre.trim();
+        } else {
+            //second empty constructor
+            this.ras = {}
+        }
     }
 
     generarIdentificador(idPadre, cardinalidad) {
@@ -66,5 +73,43 @@ export class CompetenciaDTO {
             ra.iniciarRA(this.idCSV, cantidad)
             cantidad++;
         }
+    }
+
+    fromCSV(linea) {
+        //0 Identificador padre
+        this.idPadreCSV = linea[0];
+        //1 Identificador
+        this.idCSV = linea[1];
+        //2 Nombre corto
+        this.nombreCortoCSV = linea[2];
+        this.denominacion = this.nombreCortoCSV; //Al sacarlo del csv, guardamos el nombre de esta forma
+        //3 Descripción
+        this.descripcionCSV = linea[3];
+        //4 Descripción del formato
+        this.descripcionFormatoCSV = linea[4];
+        //5 Valores de escala
+        this.valoresEscalaCSV = linea[5];
+        //6 Configuración de escala
+        this.configuracionEscalaCSV = linea[6];
+        //7 Tipo de regla (opcional)
+        this.tipoReglaCSV = linea[7];
+        //8 Resultado de la regla (opcional)
+        this.resultadoReglaCSV = linea[8];
+        //9 Configuración de regla (opcional)
+        this.configuracionReglaCSV = linea[9];
+        //10 Identificadores de referencias cruzadas de competencias
+        this.idReferenciasCruzadasCompetenciasCSV = linea[10];
+        //11 Identificador de la exportación (opcional)
+        this.idExportacionCSV = linea[11];
+        //12 Es marco de competencias
+        this.esMarcoCompetenciasCSV = linea[12];
+        //13 Taxonomía
+        this.taxonomiaCSV = linea[13];
+    }
+
+    addResultadoAprendizajeFromCSV(linea) {
+        let resultadoAprendizaje = new ResultadoAprendizajeDTO();
+        resultadoAprendizaje.fromCSV(linea);
+        this.ras[linea[1]] = resultadoAprendizaje;
     }
 }
