@@ -35,9 +35,18 @@ export function BotonesSeleccion() {
     }
 
     return (
-        <div>
+        <div className='contenedor_botones_seleccion'>
+            <IndicadorCompetenciasSeleccionadas />
             <button className="btn_default" onClick={seleccionarTodo}>Seleccionar todo</button>
             <button className="btn_default" onClick={limpiarSeleccion}>Limpiar selección</button>
         </div>
+    )
+}
+
+
+function IndicadorCompetenciasSeleccionadas() {
+    let { competenciasSeleccionadasNum } = useContext(EscenaVisualizacion)
+    return (
+        <b>Competencias: {competenciasSeleccionadasNum} competencias seleccionadas</b>
     )
 }

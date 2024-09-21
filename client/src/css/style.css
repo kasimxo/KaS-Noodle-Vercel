@@ -91,7 +91,7 @@ label {
     font-size: 14px;
 }
 .titulo {
-    font-size: 20px;
+    font-size: 25px;
 }
 .alto {
     height: 100%;
@@ -153,6 +153,12 @@ label {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+.contenedor_botones_seleccion {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
 }
 .panel {
     background: white; 
@@ -301,7 +307,6 @@ label {
     flex-wrap: wrap;
 }
 .marco {
-    padding: 20px 0px 0px 0px;
     width: 100%;
 }
 .padding_10{

@@ -73,7 +73,7 @@ export function MarcoCompetencias(props) {
 
                     >
                         <p className='titulo'>{contenido['descripcionCSV']}</p>
-                        <IndicadorCompetenciasSeleccionadas />
+
                         <BotonesSeleccion />
                         <Competencias competencias={contenido['competencias']} />
                     </article>
@@ -85,11 +85,4 @@ export function MarcoCompetencias(props) {
             </section>
         )
     }
-}
-
-function IndicadorCompetenciasSeleccionadas() {
-    let { competenciasSeleccionadasNum } = useContext(EscenaVisualizacion)
-    return (
-        <b>Competencias: {competenciasSeleccionadasNum} competencias seleccionadas</b>
-    )
 }
