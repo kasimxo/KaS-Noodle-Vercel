@@ -18,13 +18,18 @@ main {
     width: 100%;
     height: 100%;
     padding: 0;
+    display: block;
 }
 section {
     display: flex;
     flex-direction: row-reverse;
     flex-wrap: wrap;
-    padding-left: 10%;
-    padding-right: 10%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 15px;
+    border-radius: 25px;
 }
 label {
     margin-top: 16px;
@@ -323,6 +328,169 @@ label {
     width: 50%;
     height: 100%;
 }
+/* TEMA CLARO */
+@media (prefers-color-scheme: light) {
+    body, #root, #container { 
+        background: #ECEFF1; 
+        color: rgba(0,0,0,0.87); 
+    }
+    p, label {
+        color: rgba(0,0,0,0.6);
+    }
+    #menu {
+        background: rgb(23, 21, 22); 
+    }
+    #load { 
+        color: rgba(0,0,0,0.4); 
+    }
+    #archivoTipo {
+        border-left: 1px solid rgb(107, 107, 107);
+    }
+    .btn_subir_archivo {
+        background-color: rgba(23,21,22,1);
+    }
+    .btn_subir_archivo:hover {
+        background-color:  rgb(70, 70, 70);
+    }
+    .btn_cancelar:hover {
+        background-color:  rgba(70, 70, 70, 0.1);
+    }
+    .btn_default {
+        background-color: rgba(23,21,22,1);
+        color: rgb(255, 255, 255);
+    }
+    .btn_default:hover {
+        background-color:  rgb(70, 70, 70);
+    }
+    .btn_default:disabled {
+        background-color:  rgb(70, 70, 70);
+    }
+    .panel {
+        background: white; 
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    }
+    .panel_horizontal {
+        background: white; 
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    }
+    .competencia {
+        background-color: white;
+    }
+    .competencia_editable, .resultadosAprendizaje_editable, .resultadoAprendizaje_editable {
+        background-color: white;
+    }
+    .btn_Comp, .btn_RA {
+        background-color: transparent;
+        color: rgba(0,0,0,0.6);
+    }
+    .btn_Comp_Editable, .btn_RA_Editable, .text_RA_Editable, .btn_CE_Editable, .text_CE_Editable {
+        background-color: transparent;
+        color: rgba(0,0,0,0.6);
+    }
+    .btn_Comp:hover, .btn_RA:hover {
+        color: rgba(0,0,0,1);
+    }
+    .btn_Comp_Editable:hover, .btn_RA_Editable:hover, .btn_CE_Editable:hover, .btn_transparente:hover {
+        color: rgba(0,0,0,1);
+    }
+    .btn_transparente {
+        background-color: transparent;
+    }
+    .boxShadow {
+        box-shadow: 0px 0px 3px black;
+    }
+    .competenciaEditable {
+        color: rgba(0,0,0,0.6);
+    }
+  }
+ /* TEMA OSCURO */
+ @media (prefers-color-scheme: dark) {
+    body, #root, #container { 
+        background: rgb(37, 34, 36); 
+        color: rgba(255, 255, 255, 0.87); 
+    }
+    p, label {
+        color: rgba(255, 255, 255, 0.85);
+    }
+    section {
+        background-color: #eceff12a;
+
+    }
+    #menu {
+        background-color: rgb(23,21,22);
+        border-bottom: 1px solid #eceff123;
+        box-shadow: 0px 2px 1px 1px rgba(0,0,0, 0.1);;
+    }
+    #load { 
+        color: rgba(255, 255, 255, 0.4); 
+    }
+    #archivoTipo {
+        border-left: 1px solid rgb(107, 107, 107);
+    }
+    .btn_subir_archivo {
+        background-color: rgb(77, 77, 77);
+        border: 1px solid #eceff123;
+        box-shadow: 0 0px 3px 3px rgba(0, 0, 0, 0.12);
+    }
+    .btn_subir_archivo:hover {
+        background-color:  rgb(34, 34, 34);
+    }
+    .btn_cancelar:hover {
+        background-color:  rgba(206, 206, 206, 0.25);
+    }
+    .btn_default {
+        background-color: rgb(77, 77, 77);
+        color: #ECEFF1;
+        border: 1px solid #eceff123;
+        box-shadow: 0 0px 3px 3px rgba(0, 0, 0, 0.12);
+    }
+    .btn_default:hover {
+        background-color:  rgb(34, 34, 34);
+    }
+    .btn_default:disabled {
+        background-color:  rgba(70, 70, 70,0.6);
+        color: #eceff18c;
+    }
+    .panel {
+        background: rgba(70, 66, 68, 0.74); 
+        border: 1px solid #eceff123;
+        box-shadow: 0 0px 3px 3px rgba(0, 0, 0, 0.12);
+    }
+    .panel_horizontal {
+        background: rgba(70, 66, 68, 0.74); 
+        border: 1px solid #eceff123;
+        box-shadow: 0 0px 3px 3px rgba(0, 0, 0, 0.12);
+    }
+    .competencia {
+        background-color: rgb(77, 77, 77);
+    }
+    .competencia_editable, .resultadosAprendizaje_editable, .resultadoAprendizaje_editable {
+        background-color: rgb(77, 77, 77);
+    }
+    .btn_Comp, .btn_RA {
+        background-color: transparent;
+        color: rgba(255,255,255,0.85);
+    }
+    .btn_Comp_Editable, .btn_RA_Editable, .text_RA_Editable, .btn_CE_Editable, .text_CE_Editable {
+        background-color: transparent;
+        color: rgba(255,255,255,0.85);
+    }
+    .btn_Comp:hover, .btn_RA:hover {
+        color: rgba(255,255,255,1);
+    }
+    .btn_Comp_Editable:hover, .btn_RA_Editable:hover, .btn_CE_Editable:hover, .btn_transparente:hover {
+        color: rgba(255,255,255,1);
+    }
+    .btn_transparente {
+        background-color: transparent;
+    }
+    .boxShadow {
+        box-shadow: 0px 0px 3px #ECEFF1;
+    }
+    .competenciaEditable {
+        color: rgba(255,255,255,0.85);
+    }
+  }
 @media (max-width: 600px) {
   body, body > div { 
     margin-top: 0; 
