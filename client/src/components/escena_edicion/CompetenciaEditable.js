@@ -1,5 +1,5 @@
 import { useState, useContext } from "react"
-import { Marco } from "../../App"
+import { Marco } from '../../pages/Layout'
 import { ResultadosAprendizajeEditable } from "./ResultadosAprendizajeEditable"
 import { TextoEditable } from "./TextoEditable"
 

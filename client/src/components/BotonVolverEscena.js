@@ -1,22 +1,27 @@
-import { subirArchivoPDF, enviarArchivoPDF, textoArchivo } from '../js/script.js'
-import { useContext, useState } from 'react'
-import { Marco } from '../App.js'
+import { Link, useLocation } from 'react-router-dom'
 
-/** Componente utilizado para volver a una escena.
- * 
- *  Acepta el prop 'escena' (string) que se utilizará para navegar a la escena correspondiente */
+
 export function BotonVolverEscena(props) {
     //Indicamos a que escena volver
-    let escena = props.escena
+    let escena = ''
+    let location = useLocation()
 
-    const { setContenido, setEscenaActual } = useContext(Marco)
-
-    function VolverEscena() {
-        console.log('Hemos pulsado volver a seleccionar archivo')
-        setEscenaActual(props.escena)
+    switch (location.pathname) {
+        case '/edit':
+            escena = '/view'
+            break
+        case '/view':
+            escena = '/select'
+            break
+        default:
+            escena = '/'
+            break
     }
 
+
     return (
-        <button id='btn_procesar_archivo' className='btn_default' onClick={VolverEscena}>Volver</button>
+        <Link to={escena} className='btn_default'>
+            Volver
+        </Link>
     )
 }

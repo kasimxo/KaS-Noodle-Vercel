@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react'
-import { Marco } from '../../App'
+import { Marco } from '../../pages/Layout'
 
 import { Competencias } from './Competencias'
 import { BotonExportar } from './BotonExportar'
@@ -51,7 +51,7 @@ export function MarcoCompetencias(props) {
 
     if (contenido !== undefined) {
         return (
-            <section className={escenaActual === 'MarcoCompetencias' ? '' : 'invisible'}>
+            <section className='MarcoCompetencias'>
                 <EscenaVisualizacionProvider>
 
                     <article className='marco'
@@ -83,6 +83,10 @@ export function MarcoCompetencias(props) {
                     </article>
                 </EscenaVisualizacionProvider>
             </section>
+        )
+    } else {
+        return (
+            <h1>Error con {contenido}</h1>
         )
     }
 }

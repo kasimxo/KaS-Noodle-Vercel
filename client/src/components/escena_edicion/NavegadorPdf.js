@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { Marco } from "../../App"
+import { Marco } from '../../pages/Layout'
 
 export function NavegadorPdf(props) {
 

@@ -2,7 +2,7 @@
 import { not_implemented } from '../../js/script.js'
 import { SubirArchivoPDF, textoArchivo, SubirArchivoCSV } from '../../js/script.js'
 import { useContext, useState } from 'react'
-import { Marco } from '../../App.js'
+import { Marco } from '../../pages/Layout'
 import { BotonProcesarArchivo } from './BotonProcesarArchivo.js'
 
 import img_pdf from './../../static/pdf_icon.png'
@@ -12,7 +12,7 @@ import img_cancelar from './../../static/Cancelar_icono.png'
 export function SeleccionarArchivo(props) {
 
     const {
-        escenaActual, setProcesarActivo,
+        setProcesarActivo,
         setRutaArchivo,
         tipoArchivo, setTipoArchivo
     } = useContext(Marco)
@@ -42,7 +42,7 @@ export function SeleccionarArchivo(props) {
 
 
     return (
-        <section className={escenaActual === 'SeleccionarArchivo' ? '' : 'invisible'}>
+        <section className='SeleccionarArchivo'>
             <article id="seleccionarArchivo">
                 <div className='ancho'>
                     <p>Seleccionar archivo</p>

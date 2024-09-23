@@ -1,5 +1,5 @@
 import { useContext, useState, memo } from "react"
-import { Marco } from "../../App"
+import { Marco } from '../../pages/Layout'
 import { EscenaVisualizacion } from "./MarcoCompetencias"
 
 import { ResultadosAprendizaje } from "./ResultadosAprendizaje"
@@ -7,6 +7,7 @@ import { ResultadosAprendizaje } from "./ResultadosAprendizaje"
 import right_arrow from './../../static/Right_arrow_icon.png'
 import down_arrow from './../../static/Down_arrow_icon.png'
 import editar_icon from './../../static/editar_icon.png'
+import { Navigate } from "react-router-dom"
 
 export function Competencias(props) {
     let competencias = props.competencias
@@ -33,6 +34,7 @@ function Competencia(props) {
         competenciasSeleccionadasNum, setCompetenciasSeleccionadasNum,
         competenciasSeleccionadas, setCompetenciasSeleccionadas
     } = useContext(EscenaVisualizacion)
+    const [listo, setListo] = useState(false)
     const [pulsado, setPulsado] = useState(false)
     const [icon, setIcon] = useState(<img src={right_arrow} className='icon_16' alt='Icono para desplegar' title='Pulsa para abrir el detalle de la competencia' />)
 
@@ -52,7 +54,8 @@ function Competencia(props) {
         var c = props.valor
         setCompetencia(c)
         setCurrPage(c['pag'])
-        setEscenaActual('EditarCompetencia')
+        setListo(true)
+        //setEscenaActual('EditarCompetencia')
     }
 
     const calcularSeleccionadas = (event) => {
@@ -102,6 +105,7 @@ function Competencia(props) {
                 <button id='btn_editar' className='btn_default' onClick={editarCOMP}>
                     <img src={editar_icon} className='icon_16' alt='Icono de edición' title='Pulsa para editar la competencia' /> &nbsp;editar
                 </button>
+                {listo && <Navigate to={'/edit'} replace={true} />}
             </div>
             <Ras ras={comp['ras']} pulsado={pulsado} />
         </div>

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { Marco } from "../../App"
+import { Marco } from '../../pages/Layout'
 import { CompetenciaEditable } from "./CompetenciaEditable";
 import 'react-pdf/dist/Page/TextLayer.css'
 import 'react-pdf/dist/Page/AnnotationLayer.css';
@@ -30,7 +30,7 @@ const options = {}
 export function EditarCompetencia() {
 
 
-    const { escenaActual, setEscenaActual,
+    const {
         competencia, setCompetencia,
         rutaArchivo,
         currPage, setCurrPage,
@@ -66,7 +66,7 @@ export function EditarCompetencia() {
     }
 
     return (
-        <section id='editarCompetencia' className={escenaActual === 'EditarCompetencia' ? '' : 'invisible'}>
+        <section id='editarCompetencia' className='EditarCompetencia'>
             <article id='visualizador_pdf' className={pdfShown ? "visualizador_pdf visible" : "invisible"} >
                 <NavegadorPdf numPages={numPages} />
                 <div className="boxShadow">

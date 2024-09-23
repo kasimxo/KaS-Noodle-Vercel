@@ -1,9 +1,11 @@
-import { useContext } from "react"
-import { Marco } from "../../App"
+import { useContext, useState } from "react"
+import { Marco } from '../../pages/Layout'
+import { Navigate } from "react-router-dom"
 
 export function BotonGuardarCambios(props) {
 
-    const { contenido, competencia, setContenido, setEscenaActual } = useContext(Marco)
+    const { contenido, competencia, setContenido } = useContext(Marco)
+    const [listo, setListo] = useState(false)
 
     /** Método que devuelve un "componente" (competencia, ra, ce) a partir de su correspondiente elemento html */
     //En caso de que se trate de una Comp, los ras no van incluidos
@@ -12,6 +14,7 @@ export function BotonGuardarCambios(props) {
 
         //Recogemos el nuevo texto
         var denominacion = Elemento.querySelector('.contenido').innerText
+
 
         var componente = {
             nombre: "",
@@ -83,13 +86,14 @@ export function BotonGuardarCambios(props) {
         //newRasElement.forEach((elemento) => formarComponente(elemento))
         contenido['competencias'][modu] = newCompetencia
 
-        setEscenaActual('MarcoCompetencias')
+        setListo(true)
     }
 
     return (
         <button className='btn_default'
             onClick={guardarCambios}>
             Guardar cambios
+            {listo && <Navigate to={'/view'} replace={true} />}
         </button>
     )
 }
