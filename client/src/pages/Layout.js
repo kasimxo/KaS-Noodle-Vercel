@@ -1,9 +1,6 @@
 
 import { Menu } from './../components/Menu'
-import { SeleccionarArchivo } from './../components/escena_seleccion/SeleccionarArchivo'
-import { MarcoCompetencias } from './../components/escena_visualizacion/MarcoCompetencias'
-import { EditarCompetencia } from './../components/escena_edicion/EditarCompetencia'
-import { useState, createContext, useContext } from 'react'
+import { useState, createContext } from 'react'
 import { Outlet } from 'react-router-dom'
 
 export function Layout() {

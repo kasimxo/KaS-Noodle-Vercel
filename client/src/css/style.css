@@ -51,6 +51,18 @@ label {
     padding-bottom: 2px;
     display: inherit;
 }
+#contenedor_landing_page {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: transparent;
+}
+#logo_landing_page {
+    max-width: 50%;
+}
+#imagen_landing_page {
+    width: auto;
+}
 #logo_ext {
     height: 100%;
 }
@@ -121,15 +133,16 @@ label {
     justify-items: center;
     align-items: center;
 }
+.half {
+    max-width: 50%;
+}
 .btn_cancelar:hover {
     background-color:  rgba(70, 70, 70, 0.1);
 }
 .btn_default {
-    border: 0px ;
-    background-color: rgba(23,21,22,1);
+    
     padding: 10px 15px 10px 15px;
     border-radius: 20px;
-    color: rgb(255, 255, 255);
     font-weight: bold; 
     font-size: 15px; 
     font-family: Helvetica, Arial, Roboto, sans-serif; 
@@ -367,6 +380,8 @@ label {
     .btn_default {
         background-color: rgba(23,21,22,1);
         color: rgb(255, 255, 255);
+        border: 1px solid #ffffff50;
+        box-shadow: 0 0px 2px 2px rgba(0, 0, 0, 0.12);
     }
     .btn_default:hover {
         background-color:  rgb(70, 70, 70);

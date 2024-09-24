@@ -5,12 +5,12 @@ import { useState } from 'react'
 
 export function Menu() {
 
-    const [listo, setListo] = useState(false)
     return (
 
         <div id="menu" >
-            <img src={logo} id="logo_ext" alt="Logo de Noodle" onClick={() => setListo(true)} />
-            {listo && <Navigate to='/' replace={true} />}
+            <Link to='/' replace={true} >
+                <img src={logo} id="logo_ext" alt="Logo de Noodle" />
+            </Link>
         </div>
     )
 }
