@@ -77,7 +77,7 @@ export function MarcoCompetencias(props) {
                         <BotonesSeleccion />
                         <Competencias competencias={contenido['competencias']} />
                     </article>
-                    <article className='contenedor_botones'>
+                    <article className='contenedor_botones_pie'>
                         <BotonVolverEscena escena='SeleccionarArchivo' />
                         <BotonExportar />
                     </article>

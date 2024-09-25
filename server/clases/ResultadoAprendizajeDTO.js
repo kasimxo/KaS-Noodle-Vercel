@@ -19,16 +19,16 @@ export class ResultadoAprendizajeDTO {
     idExportacionCSV
     esMarcoCompetenciasCSV
     taxonomiaCSV
+    criterios = {}
 
     constructor(nombre, index) {
         if (nombre !== undefined) {
             this.nombre = nombre
             this.descripcionCSV = nombre
             this.pag = index
-            this.criterios = {}
+
         } else {
             //second empty constructor
-            this.criterios = {}
 
         }
     }

@@ -98,13 +98,15 @@ function Competencia(props) {
             data-pagina={comp['pag']}
         >
             <div className='contenedor_botones'>
-                <div>
-                    <input type='checkbox' onChange={calcularSeleccionadas} />
-                    <button id='btn_Comp' className='btn_Comp' onClick={expandirCOMP}>{icon} {comp['nombreCortoCSV']}</button>
+                <div className="visualizador_comp_align">
+                    <div>
+                        <input type='checkbox' onChange={calcularSeleccionadas} />
+                        <button id='btn_Comp' className='btn_Comp' onClick={expandirCOMP}>{icon} {comp['nombreCortoCSV']}</button>
+                    </div>
+                    <button id='btn_editar' className='btn_default' onClick={editarCOMP}>
+                        <img src={editar_icon} className='icon_16' alt='Icono de edición' title='Pulsa para editar la competencia' /> &nbsp;editar
+                    </button>
                 </div>
-                <button id='btn_editar' className='btn_default' onClick={editarCOMP}>
-                    <img src={editar_icon} className='icon_16' alt='Icono de edición' title='Pulsa para editar la competencia' /> &nbsp;editar
-                </button>
                 {listo && <Navigate to={'/edit'} replace={true} />}
             </div>
             <Ras ras={comp['ras']} pulsado={pulsado} />

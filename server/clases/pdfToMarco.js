@@ -136,7 +136,7 @@ function procesarTexto(paginas) {
 
             } else if (excepcionModulo) {
                 let mod = linea
-                console.log('Modulo a través de excepción:' + mod + "\nRaw: " + linea + "\nLongitud: " + mod.length)
+                //console.log('Modulo a través de excepción:' + mod + "\nRaw: " + linea + "\nLongitud: " + mod.length)
                 excepcionModulo = false
                 mod = limpiar(mod);
 
@@ -160,12 +160,19 @@ function procesarTexto(paginas) {
                     let reg1 = "^[1-9]\\.\\s.*"
                     if (linea.match(reg1)) {
                         //Si detectamos un nuevo RA tras procesar los CEs del anterior
+                        console.log('Hemos detectado un nuevo RA tras procesar los CEs', ce, ultimora)
                         if (ce != null) {
                             try {
-                                marco.competencias[modu].ras[ultimora].criterios.Add(ce.contenido, ce);
+                                console.log(marco.competencias[modu].ras, '<- Ras')
+                                console.log(marco.competencias[modu].ras[ultimora].criterios, '<- RA ultimora')
+                                marco.competencias[modu].ras[ultimora].criterios[ce.contenido] = ce;
+
                                 ce = null;
                             }
-                            catch (e) { }
+                            catch (e) {
+
+                                console.error('Error tratando de meter ce al último ra', e)
+                            }
                         }
 
                         //Al crear un nuevo resultado de aprendizaje, limpiamos la numeración que lleve al principio
@@ -251,7 +258,7 @@ export function pdfToMarco(body) {
         //Esto sería mas interesante procesarlo página a página, porque tal y como está ahora 
         //Cargas todo
         pdf(dataBuffer).then(function (data) {
-            console.log("Numero de páginas: ", data.numpages)
+            //console.log("Numero de páginas: ", data.numpages)
 
             let marco = procesarTexto(data.pages)
             marco.iniciarMarco()
