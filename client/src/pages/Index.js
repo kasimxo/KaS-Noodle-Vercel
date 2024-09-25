@@ -1,14 +1,13 @@
 import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 
-import placeholder from './../static/pdf_icon.png'
+import transformacion from './../static/transformacion_icon.png'
 import logo_ext_white from './../static/NoodleLogotipoExtended_Inv720.png'
 import logo_ext_black from './../static/NoodleLogotipoExtended_720.png'
 
 
 export function Index() {
 
-    const [listo, setListo] = useState(false)
     var dark = false
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         dark = true
@@ -26,7 +25,7 @@ export function Index() {
                     </button>
                 </Link>
             </div>
-            <img src={placeholder} alt={'documentos'} title='Documentos' id="imagen_landing_page" />
+            <img src={transformacion} alt={'documentos'} title='Documentos' id="imagen_landing_page" />
         </section>
 
     )

@@ -58,6 +58,7 @@ label {
 }
 #contenedor_landing_page {
     display: flex;
+
     flex-direction: row;
     justify-content: space-between;
     background-color: transparent;
@@ -67,6 +68,7 @@ label {
 }
 #imagen_landing_page {
     width: auto;
+    max-width: 50%;
 }
 #logo_ext {
     height: 100%;
