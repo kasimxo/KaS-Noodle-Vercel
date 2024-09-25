@@ -8,11 +8,9 @@ export function Layout() {
     return (
         <div id="container">
             <Menu />
-            <main >
-                <MarcoProvider>
-                    <Outlet />
-                </MarcoProvider>
-            </main>
+            <MarcoProvider>
+                <Outlet />
+            </MarcoProvider>
         </div>
     );
 
