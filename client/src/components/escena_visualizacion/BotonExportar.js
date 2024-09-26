@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { EscenaVisualizacion } from "./MarcoCompetencias"
+import { Link } from "react-router-dom"
 
 export function BotonExportar() {
 
@@ -29,7 +30,8 @@ export function BotonExportar() {
     }
     function exportar() {
         if (Object.keys(competenciasSeleccionadas).length < 1) {
-            alert('No hay ninguna competencia seleccionada, por favor, selecciona las competencias que desees exportar.')
+            document.getElementById('popup_container').style.display = 'block'
+
             return
         }
 
@@ -80,10 +82,23 @@ export function BotonExportar() {
 
     }
     return (
+        <div>
 
-        <button id="btn_exportar" value="exportar_btn" name="exportar_btn" className="btn_default" onClick={exportar}>
-            Exportar
-        </button>
+            <div id='popup_container' className='invisible'>
+                <div id='popup'></div>
+                <div id="popupDialog">
+                    <div >
+                        <p id='texto_dialog'>No hay ninguna competencia seleccionada, por favor, selecciona las competencias que desees exportar.</p>
+                    </div>
+                    <button className='btn_default' onClick={() => {
+                        document.getElementById('popup_container').style.display = 'none'
+                    }}>Cerrar</button>
+                </div>
+            </div >
+            <button id="btn_exportar" value="exportar_btn" name="exportar_btn" className="btn_default" onClick={exportar}>
+                Exportar
+            </button>
 
+        </div>
     )
 }

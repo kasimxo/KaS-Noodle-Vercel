@@ -1,10 +1,10 @@
 import { createContext, useContext, useState } from 'react'
 import { Marco } from '../../pages/Layout'
-
 import { Competencias } from './Competencias'
 import { BotonExportar } from './BotonExportar'
 import { BotonVolverEscena } from '../BotonVolverEscena'
 import { BotonesSeleccion } from './BotonesSeleccion'
+import { Link, Navigate } from 'react-router-dom'
 
 /*
 data-idpadre=''
@@ -86,7 +86,17 @@ export function MarcoCompetencias(props) {
         )
     } else {
         return (
-            <h1>Error con {contenido}</h1>
+            <section className='nothing'>
+                <div id='popup'></div>
+                <div id="popupDialog">
+                    <div >
+                        <p id='texto_dialog'>Error mostrando el marco de competencias: El marco de competencias está vacío</p>
+                    </div>
+                    <Link to='/select'>
+                        <button className='btn_default' >Volver</button>
+                    </Link>
+                </div>
+            </section >
         )
     }
 }

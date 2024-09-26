@@ -1,6 +1,8 @@
 import { useContext, useState } from "react"
 import { Marco } from '../../pages/Layout'
 import { CompetenciaEditable } from "./CompetenciaEditable";
+import { Link } from "react-router-dom";
+
 import 'react-pdf/dist/Page/TextLayer.css'
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 
@@ -49,7 +51,20 @@ export function EditarCompetencia() {
     if (competencia !== undefined) {
         competencia_node = <CompetenciaEditable valor={competencia} />
     } else {
-        competencia_node = ''
+        return (
+
+            <section className='nothing'>
+                <div id='popup'></div>
+                <div id="popupDialog">
+                    <div >
+                        <p id='texto_dialog'>Error en edición: No hay una competencia seleccionada</p>
+                    </div>
+                    <Link to='/select'>
+                        <button className='btn_default' >Volver</button>
+                    </Link>
+                </div>
+            </section >
+        )
     }
 
     function onDocumentLoadSuccess({ numPages: nextNumPages }) {
@@ -84,7 +99,6 @@ export function EditarCompetencia() {
                 <img src={pdfShown ? left_arrow : right_arrow} alt='Mostrar pdf origen' title="Mostrar/ocultar pdf origen" className="icon_32"></img>
             </button>
             {competencia_node}
-
             <article className='contenedor_botones'>
                 <BotonVolverEscena escena='MarcoCompetencias' />
                 <BotonGuardarCambios />
