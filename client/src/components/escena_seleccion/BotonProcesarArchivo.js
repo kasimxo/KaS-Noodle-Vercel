@@ -33,7 +33,6 @@ export function BotonProcesarArchivo(props) {
 
     return (
         <div>
-
             <button id='btn_procesar_archivo' className='btn_default' onClick={Procesar} disabled={!procesarActivo}>Procesar</button>
             {listo && <Navigate to={'/view'} replace={true} />}
         </div>

@@ -38,8 +38,28 @@ section {
 label {
     margin-top: 16px;
     display: inline-block;
-
 }
+#popupDialog {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  #popup {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
 #competenciaEditando {
     width: 50%;
 }
@@ -277,6 +297,15 @@ label {
     overflow:auto;
     height: 100%;
 }
+.centrado {
+    display: flex;
+    justify-content: center;
+}
+.nothing {
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+}
 .competencia_editable, .resultadosAprendizaje_editable, .resultadoAprendizaje_editable {
     margin: 10px;
     padding: 10px;
@@ -449,6 +478,17 @@ label {
   }
  /* TEMA OSCURO */
  @media (prefers-color-scheme: dark) {
+    #popupDialog{
+        background-color: #fff;
+        border: 1px solid #ccc;
+    }
+    #popup {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      #texto_dialog {
+        color: rgb(23,21,22);
+      }
+
     body, #root, #container { 
         background: rgb(37, 34, 36); 
         color: rgba(255, 255, 255, 0.87); 
