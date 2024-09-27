@@ -99,7 +99,7 @@ export function EditarCompetencia() {
                 <img src={pdfShown ? left_arrow : right_arrow} alt='Mostrar pdf origen' title="Mostrar/ocultar pdf origen" className="icon_32"></img>
             </button>
             {competencia_node}
-            <article className='contenedor_botones'>
+            <article className='contenedor_botones_pie'>
                 <BotonVolverEscena escena='MarcoCompetencias' />
                 <BotonGuardarCambios />
             </article>
