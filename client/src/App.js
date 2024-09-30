@@ -6,6 +6,7 @@ import { View } from './pages/View';
 import { Select } from './pages/Select';
 import { Error } from './pages/Error';
 import { Edit } from './pages/Edit';
+import { Help } from './pages/Help';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="select" element={<Select />} />
           <Route path="view" element={<View />} />
           <Route path="edit" element={<Edit />} />
+          <Route path="help" element={<Help />} />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

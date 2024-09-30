@@ -2,6 +2,7 @@
 import { Menu } from './../components/Menu'
 import { useState, createContext } from 'react'
 import { Outlet } from 'react-router-dom'
+import { BotonAyuda } from '../components/BotonAyuda';
 
 export function Layout() {
 
@@ -11,6 +12,7 @@ export function Layout() {
             <MarcoProvider>
                 <Outlet />
             </MarcoProvider>
+            <BotonAyuda />
         </div>
     );
 }
