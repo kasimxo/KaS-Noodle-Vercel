@@ -13,7 +13,7 @@ function base64toPdf(base64) {
         response = {};
 
     let file = 'archivo.pdf'
-    console.log('matches' + matches.length)
+    //console.log('matches' + matches.length)
     if (matches.length !== 3) {
         return new Error('Invalid input string');
     }
@@ -160,11 +160,11 @@ function procesarTexto(paginas) {
                     let reg1 = "^[1-9]\\.\\s.*"
                     if (linea.match(reg1)) {
                         //Si detectamos un nuevo RA tras procesar los CEs del anterior
-                        console.log('Hemos detectado un nuevo RA tras procesar los CEs', ce, ultimora)
+                        //console.log('Hemos detectado un nuevo RA tras procesar los CEs', ce, ultimora)
                         if (ce != null) {
                             try {
-                                console.log(marco.competencias[modu].ras, '<- Ras')
-                                console.log(marco.competencias[modu].ras[ultimora].criterios, '<- RA ultimora')
+                                //console.log(marco.competencias[modu].ras, '<- Ras')
+                                //console.log(marco.competencias[modu].ras[ultimora].criterios, '<- RA ultimora')
                                 marco.competencias[modu].ras[ultimora].criterios[ce.contenido] = ce;
 
                                 ce = null;
